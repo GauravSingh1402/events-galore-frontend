@@ -1,0 +1,297 @@
+.event-details
+{
+    font-size: 30px;
+    font-weight: bold;
+    margin-left:45%;
+    margin-right:30%;
+    color:white;
+    top:100px;
+    position: absolute;
+}
+
+.eventdes
+{
+    font-size:20px;
+    font-weight:bold;
+    margin-left:50%;
+    margin-right:50%;
+    position:absolute;
+    top:150px;
+    color:white;
+}
+.evntv
+{
+    bottom:50px;
+    left:20px;
+    font-size:30px;
+    position:absolute;
+    font-weight: bold;
+    color:white;
+}
+.evntdate
+{
+    bottom:50px;
+    right:20px;
+    font-size:30px;
+    position:absolute;
+    color:white;
+    font-weight: bold;
+
+}
+.image
+{
+    height: 1020px;
+    width: "100%";
+    display: "flex";
+    overflow: "hidden";
+    align-items: "center";
+    margin-bottom: 0px;
+}
+.pbanner
+{
+    position:relative;
+}
+
+.event-details
+{
+    display:flex;
+    justify-content: center;
+}
+.butt-r
+{
+    color:red;
+    transform: scale(1.200);
+
+}
+.butt-l
+{
+    color:yellow;
+    transform: scale(1.200);
+}
+.buttmax
+{
+    position:absolute;
+    bottom:100px;
+    right: 2%;
+    margin-bottom: 10%;
+}
+.buttmax1
+{
+    position:absolute;
+    bottom:100px;
+    left: 2%;
+    bottom:100px;
+    margin-bottom: 10%;
+}
+
+
+@media only screen and (max-width:800px)
+{
+    .banner
+    {
+        display:flex;
+        justify-content:center;
+        flex-direction:column;
+        align-items: center;
+    }
+    .event-info
+    {
+        display:flex;
+        margin-right:30px;
+    }
+    .image
+    {
+        display:flex;
+        justify-content:center;
+        align-items: center;
+    }
+    .event-info
+    {
+        display:none;
+    }
+    .eventd
+    {
+        font-size:10px;
+    }
+    .event-details
+    {
+        font-size:10px;
+    }
+    .pbanner
+    {
+        position:relative;
+    }
+    .buttmax
+{
+    position:absolute;
+    bottom:150px;
+    right: 2%;
+    margin-bottom: 10%;
+}
+.buttmax1
+{
+    position:absolute;
+    bottom:150px;
+    left: 2%;
+    margin-bottom: 10%;
+}
+.event-details
+{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left:30%;
+    margin-right:30%;
+    color:white;
+    top:100px;
+    position: absolute;
+}
+
+.eventdes
+{
+    font-size:20px;
+    font-weight:bold;
+    margin-left:40%;
+    margin-top:40%;
+    position:absolute;
+    top:150px;
+    color:white;
+}
+.evntv
+{
+    bottom:50px;
+    left:20px;
+    font-size:20px;
+    position:absolute;
+    font-weight: bold;
+    color:white;
+}
+.evntdate
+{
+    bottom:50px;
+    right:20px;
+    font-size:20px;
+    position:absolute;
+    color:white;
+    font-weight: bold;
+
+
+}
+
+.butt-r
+{
+    color:red;
+    transform: scale(1.200);
+
+}
+.butt-l
+{
+    color:yellow;
+    transform: scale(1.200);
+}
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px){
+    .banner
+    {
+        display:flex;
+        justify-content:center;
+        flex-direction:column;
+        align-items: center;
+    }
+    .event-info
+    {
+        display:flex;
+        margin-right:30px;
+    }
+    .image
+    {
+        display:flex;
+        justify-content:center;
+        align-items: center;
+    }
+    .event-info
+    {
+        display:none;
+    }
+    .eventd
+    {
+        font-size:10px;
+    }
+    .event-details
+    {
+        font-size:10px;
+    }
+    .pbanner
+    {
+        position:relative;
+    }
+    .buttmax
+{
+    position:absolute;
+    bottom:150px;
+    right: 2%;
+    margin-bottom: 10%;
+}
+.buttmax1
+{
+    position:absolute;
+    bottom:150px;
+    left: 2%;
+    margin-bottom: 10%;
+}
+.event-details
+{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left:40%;
+    margin-right:30%;
+    color:white;
+    top:100px;
+    position: absolute;
+}
+
+.eventdes
+{
+    font-size:20px;
+    font-weight:bold;
+    margin-left:45%;
+    margin-top:30%;
+    position:absolute;
+    top:50px;
+    color:white;
+}
+.evntv
+{
+    bottom:50px;
+    left:20px;
+    font-size:20px;
+    position:absolute;
+    font-weight: bold;
+    color:white;
+}
+.evntdate
+{
+    bottom:50px;
+    right:20px;
+    font-size:20px;
+    position:absolute;
+    color:white;
+    font-weight: bold;
+
+
+}
+
+.butt-r
+{
+    color:red;
+    transform: scale(1.200);
+
+}
+.butt-l
+{
+    color:yellow;
+    transform: scale(1.200);
+}
+    
+}
