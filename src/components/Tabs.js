@@ -27,7 +27,6 @@ export default function SectionHeading() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Now need to add cards
         <Grid container spacing={3} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           {notes.map((note) => (
             <Grid item xs={12} sm={6} md={4} key={note.id}>
@@ -37,7 +36,6 @@ export default function SectionHeading() {
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Dont know further process
       </TabPanel>
     </Container>
   );
