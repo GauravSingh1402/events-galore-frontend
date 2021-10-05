@@ -1,11 +1,30 @@
-import React from "react";
-import Signup from "./components/Signup";
-import Login from "./components/Login";
-export default function App() {
-	return (
-		<div>
-			<Signup/>
-			{/* <Login /> */}
-		</div>
-	);
+import React, { Component } from 'react'
+import Navbar from './components/Navbar'
+import Banner from './components/Banner'
+import Createv from './components/Createv'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
+
+class App extends Component {
+    render() {
+        return (
+        <Router>
+            <Switch>
+            <Route exact path="/createv">
+              <Createv />
+            </Route>
+            <Route exact path="/">
+              <Navbar />
+              <Banner />
+            </Route>
+          </Switch>
+      </Router>
+        )
+    }
 }
+
+export default App;

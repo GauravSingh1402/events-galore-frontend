@@ -1,0 +1,23 @@
+.createv
+{
+     margin-left:50;
+     margin-right:50
+}
+
+
+.app-bar
+{
+    display: flex;
+}
+
+.searchb
+{
+    margin-left:0;
+    margin-right:200;
+}
+
+.root
+{
+    margin-right:200;
+    margin-left:200;
+}

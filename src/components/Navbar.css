@@ -1,0 +1,102 @@
+.bar
+{
+    display:flex;
+    top:0;
+    flex-direction:row;
+    background-color:grey;
+
+}
+
+
+.profile
+{
+    display:none;
+}
+.searchb
+{
+    margin-left:0px;
+    margin-right:50px;
+    color:white;
+}
+
+
+.hamburger-menu
+{
+    display:none;
+}
+
+.root
+{
+    padding-right:100px;
+    padding-left:50px;
+}
+
+
+.container
+{
+    display:flex;
+    justify-content:space-between;
+}
+
+.container button
+{
+    margin-right:80px;
+    color:white;
+    background-color:lightblue;
+
+}
+
+.container button:last-child
+{
+    margin-right:0px;
+}
+.container button:first-child
+{
+    margin-left:80px;
+    margin-right:80px;
+}
+.container :first-child
+{
+    margin-left:0px;
+    margin-right:0px;
+
+}
+
+.cont
+{
+    display:flex;
+    justify-content:space-between;
+    flex-direction: column;
+}
+
+.hamburger
+{
+    display:none;
+    margin-left:50px;
+    margin-right:200px;
+}
+
+
+@media only screen and (max-width:800px)
+{
+    .container 
+    {
+        flex-direction: column;
+    }
+    .container
+    {
+        display:none;
+    }
+    .hamburger
+    {
+        display:inline-block;
+        cursor:pointer;
+        margin-right:50px;
+    }
+    .searchb
+    {
+        display:none;
+    }
+
+
+}
