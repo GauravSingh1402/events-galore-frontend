@@ -12,12 +12,20 @@ import './Banner.css'
 
 const MyCollection = [
     {
+<<<<<<< HEAD
       label: "NATURE",
+=======
+      label: "MESSI GOAT",
+>>>>>>> 175f17623386ffc88490da54a02e1b48c1797f72
       imgPath:
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfR95kXmdtvUC30wSO8LMpWi5aogJ3M52qbrgIpq0vQRjrMAIgpR_qvexzaWk4kS-IJqM&usqp=CAU",
       venue:"Online",
       date:"25-12-2021",
+<<<<<<< HEAD
       description:"Scenary",
+=======
+      description:"Advait",
+>>>>>>> 175f17623386ffc88490da54a02e1b48c1797f72
     },
     {
       label: "AVENDATOR",
@@ -25,15 +33,25 @@ const MyCollection = [
   "https://wallpaperaccess.com/full/2875411.jpg",
       venue:"Online",
       date:"19-12-2021",
+<<<<<<< HEAD
       description:"Hypercar",
+=======
+      description:"Hridayesh",
+>>>>>>> 175f17623386ffc88490da54a02e1b48c1797f72
     },
     {
       label: "TREX",
       imgPath:
   "https://c4.wallpaperflare.com/wallpaper/547/845/242/animal-dinosaur-tyrannosaurus-rex-hd-wallpaper-preview.jpg",
+<<<<<<< HEAD
       venue:"DINOSAURS",
       date:"1-01-2022",
       description:"Tyrant king",
+=======
+      venue:"online",
+      date:"1-01-2022",
+      description:"Gaurav",
+>>>>>>> 175f17623386ffc88490da54a02e1b48c1797f72
     },
   ];
 
@@ -72,7 +90,11 @@ const Banner = () => {
             src={MyCollection[index].imgPath}
             style={{
               height: 500,
+<<<<<<< HEAD
               width: 1600,
+=======
+              width: "100%",
+>>>>>>> 175f17623386ffc88490da54a02e1b48c1797f72
               display: "flex",
               overflow: "hidden",
               alignItems: "center",
