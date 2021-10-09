@@ -15,6 +15,7 @@ import {
     Route,
     Link
   } from "react-router-dom";
+import EventPage from './components/EventPage'
 
 class App extends Component {
     render() {
