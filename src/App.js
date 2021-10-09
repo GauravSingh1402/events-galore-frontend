@@ -9,6 +9,7 @@ import {
     Route,
     Link
   } from "react-router-dom";
+import EventPage from './components/EventPage'
 
 class App extends Component {
     render() {
@@ -22,6 +23,9 @@ class App extends Component {
               <Navbar />
               <Banner />
               <SectionHeading />
+            </Route>
+            <Route exact path="/eventpage">
+              <EventPage/>
             </Route>
           </Switch>
       </Router>
