@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState, useEffect}  from 'react'
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 import KeyboardArrowLeft  from '@material-ui/icons/KeyboardArrowLeft'
 import Paper from '@material-ui/core/Paper'
@@ -7,51 +7,28 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import {useTheme} from '@material-ui/core/styles'
 import IconButton from '@material-ui/core/IconButton'
+import axios from 'axios'
+import useFetch from 'react-fetch-hook'
+
 
 import './Banner.css'
 
 const MyCollection = [
-    {
-<<<<<<< HEAD
-      label: "NATURE",
-=======
-      label: "MESSI GOAT",
->>>>>>> 175f17623386ffc88490da54a02e1b48c1797f72
-      imgPath:
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfR95kXmdtvUC30wSO8LMpWi5aogJ3M52qbrgIpq0vQRjrMAIgpR_qvexzaWk4kS-IJqM&usqp=CAU",
-      venue:"Online",
-      date:"25-12-2021",
-<<<<<<< HEAD
-      description:"Scenary",
-=======
-      description:"Advait",
->>>>>>> 175f17623386ffc88490da54a02e1b48c1797f72
-    },
     {
       label: "AVENDATOR",
       imgPath:
   "https://wallpaperaccess.com/full/2875411.jpg",
       venue:"Online",
       date:"19-12-2021",
-<<<<<<< HEAD
       description:"Hypercar",
-=======
-      description:"Hridayesh",
->>>>>>> 175f17623386ffc88490da54a02e1b48c1797f72
     },
     {
       label: "TREX",
       imgPath:
   "https://c4.wallpaperflare.com/wallpaper/547/845/242/animal-dinosaur-tyrannosaurus-rex-hd-wallpaper-preview.jpg",
-<<<<<<< HEAD
       venue:"DINOSAURS",
       date:"1-01-2022",
       description:"Tyrant king",
-=======
-      venue:"online",
-      date:"1-01-2022",
-      description:"Gaurav",
->>>>>>> 175f17623386ffc88490da54a02e1b48c1797f72
     },
   ];
 
@@ -60,18 +37,47 @@ const MyCollection = [
  
   
 const Banner = () => {
-    const CollectionSize = MyCollection.length;
+   
     const theme = useTheme();
     const [index, setActiveStep] = React.useState(0);
-    
+    const [data,setData] = React.useState([]);
+    const [loaded,setLoaded] = React.useState(false);
+    const getEvent = async ()=> {
+      await axios("/event")
+      .then((response) => {
+      setData(response.data);
+      console.log(response.data["image"])
+      setLoaded(true);
+      console.log(data);
+      })
+      .catch((error) => {
+      console.error("Error fetching data: ", error);
+      });
+    }
+    useEffect(()=> {
+      getEvent();
+    },[]);
+     
+     
+    const CollectionSize = data.length;
+    console.log(CollectionSize);
     const goToNextPicture = () => {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
    
     }
     const goToPreviousPicture = () => {
-      
+    if(CollectionSize>=0)
       setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    else {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      }
       
+  }
+
+  
+  if(!loaded)
+  {
+      return  <h1>LOADING....</h1>
   }
   return (
     <div 
@@ -82,29 +88,25 @@ const Banner = () => {
        
         }}
       >
-
-        <div className="pbanner" style={{maxWidth:'100%', backgroundImage:`url({MyCollection[index].imgPath})`}} >
+        <div className="pbanner" style={{maxWidth:'100%', backgroundImage:`url({imgurl})`}} >
           
          
           <img  className="image"
-            src={MyCollection[index].imgPath}
+            src={data[index].image}
             style={{
               height: 500,
-<<<<<<< HEAD
               width: 1600,
-=======
-              width: "100%",
->>>>>>> 175f17623386ffc88490da54a02e1b48c1797f72
               display: "flex",
               overflow: "hidden",
               alignItems: "center",
             }}
-            alt={MyCollection[index].label}
+            alt={MyCollection[index].title}
           />
-             <div className="event-details">{MyCollection[index].label}</div>
-            <div className="eventdes">{MyCollection[index].description}</div>
-            <div className="evntv">{MyCollection[index].venue}</div>
-            <div className="evntdate">{MyCollection[index].date}</div>
+             
+            <div className="event-details">{data[index].title}</div>
+            <div className="eventdes">{data[index].description}</div>
+            <div className="evntv">{data[index].isoffline}</div>
+            <div className="evntdate">{data[index].date}</div>
             <div className="buttmax1">
               <IconButton 
                 size="large"
@@ -123,10 +125,12 @@ const Banner = () => {
                   <KeyboardArrowRight className="butt-r"/>
               </IconButton>
             </div>
+          
         </div>
+        
+
          
       </div>
-
     </div>
   )
   

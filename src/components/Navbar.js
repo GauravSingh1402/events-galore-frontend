@@ -10,19 +10,12 @@ import TextField from '@material-ui/core/TextField'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import  './Navbar.css'
-<<<<<<< HEAD
 import {useHistory,Link} from 'react-router-dom';
 
 
 
 function Navbar() {
     const history=useHistory();
-=======
-
-
-
-const Navbar = () => {
->>>>>>> 175f17623386ffc88490da54a02e1b48c1797f72
     const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -31,15 +24,17 @@ const Navbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-<<<<<<< HEAD
   function create_event()
   {
         history.push("/createv")
   }
+  function myprofile()
+  {
+        history.push("/profile")
+  }
 
 
-=======
->>>>>>> 175f17623386ffc88490da54a02e1b48c1797f72
+
 
     return (
             <AppBar>
@@ -52,14 +47,10 @@ const Navbar = () => {
                             <TextField className="text" placeholder="Search here"/>
                         </div>
                         <div className="container">
-<<<<<<< HEAD
                             <Button onClick={create_event}  variant="outlined">
-=======
-                            <Button  variant="outlined">
->>>>>>> 175f17623386ffc88490da54a02e1b48c1797f72
                                 CREATE EVENT
                             </Button>
-                            <Button  variant="outlined">My Profile </Button>
+                            <Button  variant="outlined" onClick={myprofile}>My Profile </Button>
                                <div className="hamburger-menu">
                                     <ul>
                                         <li>EDIT PROFILE</li>
