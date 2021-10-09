@@ -1,8 +1,8 @@
-<<<<<<< HEAD
 import React, { Component } from 'react'
 import Navbar from './components/Navbar'
 import Banner from './components/Banner'
 import Createv from './components/Createv'
+import SectionHeading from './components/Tabs'
 import {
     BrowserRouter as Router,
     Switch,
@@ -21,6 +21,7 @@ class App extends Component {
             <Route exact path="/">
               <Navbar />
               <Banner />
+              <SectionHeading />
             </Route>
           </Switch>
       </Router>
@@ -29,45 +30,3 @@ class App extends Component {
 }
 
 export default App;
-=======
-import CreateEvent from "./components/CreatEvent";
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import NavBar from "./components/NavBar";
-import SectionHeading from "./components/Tabs";
-import Banner from "./components/Banner";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#f44336',
-    }
-  },
-});
-function App() {
-  return (
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <NavBar />
-            <Banner />
-            <SectionHeading />
-          </Route>
-          <Route path="/create">
-            <CreateEvent />
-          </Route>
-		  <Route path="/login">
-            <Login />
-          </Route>
-		  <Route path="/signup">
-            <Signup />
-          </Route>
-        </Switch>
-      </Router>
-  );
-}
-
-export default App;
-
->>>>>>> 175f17623386ffc88490da54a02e1b48c1797f72
