@@ -9,8 +9,58 @@ import { Button } from "@mui/material";
 import { Link } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { IconButton } from "@mui/material";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useHistory, NavLink } from "react-router-dom";
 export default function Signup() {
+	const history = useHistory();
 	const [showPassword, setShowPassword] = useState(false);
+	const [state, setState] = useState({
+		firstname: "",
+		lastname: "",
+		username: "",
+		email: "",
+		password: "",
+	});
+	function handleChange(e) {
+		e.preventDefault();
+		const { name, value } = e.target;
+		setState({ ...state, [name]: value });
+	}
+	async function handleSubmit(e) {
+		e.preventDefault();
+		const { firstname, lastname, username, email, password } = state;
+		if (!firstname || !lastname || !username || !email || !password) {
+			toast.warn("Please fill all the credentials");
+		} else {
+			const res = await fetch("/register", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Accept: "application/json",
+				},
+				body: JSON.stringify({
+					firstname,
+					lastname,
+					username,
+					email,
+					password,
+				}),
+			});
+			const data = await res.json();
+			if (res.status === 422 || !data) {
+				toast.error("Invalid Registration");
+			} else {
+				toast.success("Registration successful", {
+					position: "top-center",
+					autoClose: 3000,
+				});
+				setTimeout(() => {
+					history.push("/login");
+				}, 3000);
+			}
+		}
+	}
 	return (
 		<div>
 			<Container maxWidth="xs">
@@ -34,6 +84,9 @@ export default function Signup() {
 									required
 									variant="outlined"
 									label="First Name"
+									value={state.firstname}
+									name="firstname"
+									onChange={handleChange}
 									fullWidth
 								/>
 							</Grid>
@@ -42,6 +95,9 @@ export default function Signup() {
 									required
 									variant="outlined"
 									label="Last Name"
+									value={state.lastname}
+									name="lastname"
+									onChange={handleChange}
 									fullWidth
 								/>
 							</Grid>
@@ -50,6 +106,9 @@ export default function Signup() {
 									required
 									variant="outlined"
 									label="Username"
+									value={state.username}
+									name="username"
+									onChange={handleChange}
 									fullWidth
 								/>
 							</Grid>
@@ -59,6 +118,9 @@ export default function Signup() {
 									type="email"
 									variant="outlined"
 									label="Email Address"
+									value={state.email}
+									name="email"
+									onChange={handleChange}
 									fullWidth
 								/>
 							</Grid>
@@ -68,6 +130,9 @@ export default function Signup() {
 									type={showPassword ? "text" : "password"}
 									variant="outlined"
 									label="Password"
+									value={state.password}
+									name="password"
+									onChange={handleChange}
 									fullWidth
 									InputProps={{
 										endAdornment: (
@@ -83,19 +148,25 @@ export default function Signup() {
 								/>
 							</Grid>
 							<Grid item xs={12}>
-								<Button variant="contained" color="primary" fullWidth>
+								<Button
+									variant="contained"
+									color="primary"
+									onClick={handleSubmit}
+									fullWidth
+								>
 									Sign up
 								</Button>
 							</Grid>
 							<Grid item xs={12} textAlign="center">
-								<Link variant="body2" href="#">
+								<NavLink variant="body2" to="/login">
 									Already have an account? Sign in
-								</Link>
+								</NavLink>
 							</Grid>
 						</Grid>
 					</Box>
 				</Box>
 			</Container>
+			<ToastContainer></ToastContainer>
 		</div>
 	);
 }

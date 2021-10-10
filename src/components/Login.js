@@ -11,8 +11,45 @@ import { Button } from "@mui/material";
 import { Link } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { IconButton } from "@mui/material";
+import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function Signup() {
+	const history = useHistory();
 	const [showPassword, setShowPassword] = useState(false);
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const handleLogin = async (e) => {
+		e.preventDefault();
+		if (!email || !password) {
+			toast.warn("Please fill all the credentials");
+		} else {
+			const res = await fetch("/login", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					email,
+					password,
+				}),
+			});
+			const data = await res.json();
+			if (res.status === 400 || !data) {
+				toast.error("Invalid Login");
+			} else {
+				toast.success("Login successful", {
+					position: "top-center",
+					autoClose: 3000,
+				});
+				setTimeout(() => {
+					history.push("/");
+				}, 3000);
+			}
+		}
+	};
 	return (
 		<div>
 			<Container maxWidth="xs">
@@ -37,6 +74,8 @@ export default function Signup() {
 									type="email"
 									variant="outlined"
 									label="Email Address"
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
 									fullWidth
 								/>
 							</Grid>
@@ -46,6 +85,8 @@ export default function Signup() {
 									type={showPassword ? "text" : "password"}
 									variant="outlined"
 									label="Password"
+									value={password}
+									onChange={(e) => setPassword(e.target.value)}
 									fullWidth
 									InputProps={{
 										endAdornment: (
@@ -60,26 +101,32 @@ export default function Signup() {
 									}}
 								/>
 							</Grid>
-							<Grid item xs={12}>
+							{/* <Grid item xs={12}>
 								<FormControlLabel
 									control={<Checkbox />}
 									label="Remember me"
 								></FormControlLabel>
-							</Grid>
+							</Grid> */}
 							<Grid item xs={12}>
-								<Button variant="contained" color="primary" fullWidth>
+								<Button
+									variant="contained"
+									color="primary"
+									onClick={handleLogin}
+									fullWidth
+								>
 									Log In
 								</Button>
 							</Grid>
 							<Grid item xs={12} textAlign="center">
-								<Link variant="body2" href="#">
+								<NavLink variant="body2" to="/signup">
 									New Here? Sign Up
-								</Link>
+								</NavLink>
 							</Grid>
 						</Grid>
 					</Box>
 				</Box>
 			</Container>
+			<ToastContainer></ToastContainer>
 		</div>
 	);
 }
