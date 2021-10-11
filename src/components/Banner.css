@@ -45,6 +45,7 @@
     overflow: "hidden";
     align-items: "center";
     margin-bottom: 0px;
+    filter: brightness(50%);
 }
 .pbanner
 {

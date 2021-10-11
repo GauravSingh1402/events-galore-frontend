@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Container, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { Avatar } from "@mui/material";
@@ -15,8 +15,9 @@ import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { userContext } from "../App";
 export default function Signup() {
+	const { state, dispatch } = useContext(userContext);
 	const history = useHistory();
 	const [showPassword, setShowPassword] = useState(false);
 	const [email, setEmail] = useState("");
@@ -40,6 +41,7 @@ export default function Signup() {
 			if (res.status === 400 || !data) {
 				toast.error("Invalid Login");
 			} else {
+				dispatch({ type: "USER", payload: true });
 				toast.success("Login successful", {
 					position: "top-center",
 					autoClose: 3000,

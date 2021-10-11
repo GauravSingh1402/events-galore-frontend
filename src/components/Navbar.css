@@ -1,102 +1,86 @@
-.bar
-{
-    display:flex;
-    top:0;
-    flex-direction:row;
-    background-color:grey;
-
+.bar {
+	display: flex;
+	top: 0;
+	flex-direction: row;
+	background-color: #ddd;
 }
 
-
-.profile
-{
-    display:none;
+.profile {
+	display: none;
 }
-.searchb
-{
-    margin-left:0px;
-    margin-right:50px;
-    color:white;
+.searchb {
+	margin-left: 0px;
+	margin-right: 50px;
+	color: white;
 }
 
-
-.hamburger-menu
-{
-    display:none;
+.hamburger-menu {
+	display: none;
 }
 
-.root
-{
-    padding-right:100px;
-    padding-left:50px;
+.root {
+	padding-right: 100px;
+	padding-left: 50px;
 }
 
-
-.container
-{
-    display:flex;
-    justify-content:space-between;
+.container {
+	display: flex;
+	/* justify-content:space-between; */
+	margin-left: auto;
 }
 
-.container button
-{
-    margin-right:80px;
-    color:white;
-    background-color:lightblue;
+/* .container button {
+	margin-right: 80px;
+	color: white;
+	background-color: lightblue;
+} */
 
+.container button:last-child {
+	margin-right: 0px;
+}
+.container button:first-child {
+	margin-left: 50px;
+	margin-right: 80px;
+}
+.container :first-child {
+	margin-left: 0px;
+	margin-right: 0px;
 }
 
-.container button:last-child
-{
-    margin-right:0px;
-}
-.container button:first-child
-{
-    margin-left:80px;
-    margin-right:80px;
-}
-.container :first-child
-{
-    margin-left:0px;
-    margin-right:0px;
-
+.cont {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
 }
 
-.cont
-{
-    display:flex;
-    justify-content:space-between;
-    flex-direction: column;
+.hamburger {
+	display: none;
+	margin-left: 50px;
+	margin-right: 200px;
 }
 
-.hamburger
-{
-    display:none;
-    margin-left:50px;
-    margin-right:200px;
+@media only screen and (max-width: 800px) {
+	.container {
+		flex-direction: column;
+	}
+	.container {
+		display: none;
+	}
+	.hamburger {
+		display: inline-block;
+		cursor: pointer;
+		margin-right: 50px;
+	}
+	.searchb {
+		display: none;
+	}
 }
-
-
-@media only screen and (max-width:800px)
-{
-    .container 
-    {
-        flex-direction: column;
-    }
-    .container
-    {
-        display:none;
-    }
-    .hamburger
-    {
-        display:inline-block;
-        cursor:pointer;
-        margin-right:50px;
-    }
-    .searchb
-    {
-        display:none;
-    }
-
-
+.logoClass {
+	width: 50px;
+	height: 50px;
+}
+.logotitle{
+	color: black;
+	font-size: 20px;
+	margin-left: 10px;
 }
