@@ -28,6 +28,9 @@ function Navbar() {
 	function myprofile() {
 		history.push("/profile");
 	}
+	function loginredirect() {
+		history.push("/login");
+	}
 
 	return (
 		<AppBar>
@@ -56,7 +59,9 @@ function Navbar() {
 							<li>LOGOUT</li>
 						</ul>
 					</div>
-					<Button variant="outlined" onClick={history.push("/login")}>Login</Button>
+					<Button variant="outlined" onClick={loginredirect}>
+						Login
+					</Button>
 					<Button variant="outlined">Logout</Button>
 				</div>
 				<div className="hamburger">
