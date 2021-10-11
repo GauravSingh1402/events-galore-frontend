@@ -9,6 +9,14 @@ export default function SectionHeading() {
     .then(res=>res.json())
     .then(data=>setEvent(data))
   },[]);
+  
+  const [eventweek,setEventweek] = useState([]);
+  useEffect(()=> {
+    fetch("/eventweek")
+    .then(res=>res.json())
+    .then(data=>setEventweek(data))
+  },[]);
+
   const handleTabs = (e, val) => {
     setValue(val);
   };
@@ -37,6 +45,13 @@ export default function SectionHeading() {
       </Grid>
       </TabPanel>
       <TabPanel value={value} index={1}>
+      <Grid container spacing={3} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      {eventweek.map(eventw=>(
+            <Grid item xs={12} sm={6} md={4} key={eventw._id}>
+              <NoteCard note={eventw}/>
+            </Grid> 
+      ))}    
+      </Grid>
       </TabPanel>
     </Container>
   );

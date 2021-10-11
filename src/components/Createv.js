@@ -178,6 +178,8 @@ function Createv() {
 		cost: "",
 		isfeatured: "no",
 		tags: "",
+		no_of_users: 0,
+		username:"username",
 	});
 	let name, value;
 	const handleInputs = (e) => {
@@ -207,6 +209,8 @@ function Createv() {
 			isfeatured,
 			date,
 			time,
+			no_of_users,
+			username,
 		} = event;
 		console.log(event);
 		const res = await fetch("/createv", {
@@ -229,6 +233,8 @@ function Createv() {
 				isfeatured,
 				date,
 				time,
+				no_of_users,
+				username,
 			}),
 		});
 		const data = await res.json();
@@ -420,8 +426,8 @@ function Createv() {
 					<FormLabel component="legend">Event Type</FormLabel>
 					<RadioGroup
 						className={classes.align}
-						value={event.isPaid}
-						name="isPaid"
+						value={event.ispaid}
+						name="ispaid"
 						onChange={handleInputs}
 					>
 						<FormControlLabel
