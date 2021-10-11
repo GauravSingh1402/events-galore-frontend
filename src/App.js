@@ -6,6 +6,7 @@ import Tabs from "./components/Tabs";
 import NoteCard from "./components/NoteCard";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Logout from "./components/Logout";
 import axios from "axios";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { initialState, reducer } from "./reducer/useReducer";
@@ -25,6 +26,9 @@ function App() {
 					</Route>
 					<Route exact path="/login">
 						<Login />
+					</Route>
+					<Route exact path="/logout">
+						<Logout />
 					</Route>
 					<Route exact path="/">
 						<Navbar />

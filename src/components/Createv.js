@@ -179,7 +179,7 @@ function Createv() {
 		isfeatured: "no",
 		tags: "",
 		no_of_users: 0,
-		username:"username",
+		username: "username",
 	});
 	let name, value;
 	const handleInputs = (e) => {
@@ -238,12 +238,13 @@ function Createv() {
 			}),
 		});
 		const data = await res.json();
-		if (data.status === 422 || !data) {
+		if (res.status === 422 || !data) {
 			alert("EVENT CREATION FAILED");
 			console.log("EVENT CREATION FAILED");
 		}
 		if (data.status === 200 || data.status === 201) {
 			console.log("ZA WARUDOO!!!!");
+			history.push("/");
 		} else {
 			window.alert("something went wrong");
 		}
