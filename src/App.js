@@ -4,8 +4,6 @@ import Banner from "./components/Banner";
 import Createv from "./components/Createv";
 import Tabs from "./components/Tabs";
 import NoteCard from "./components/NoteCard";
-import CreatEvent from "./components/CreatEvent";
-import EventPage from "./components/EventPage";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import axios from "axios";
@@ -32,9 +30,6 @@ function App() {
 						<Navbar />
 						<Banner />
 						<Tabs />
-					</Route>
-					<Route exact path="/eventpage">
-						<EventPage />
 					</Route>
 				</Switch>
 			</Router>

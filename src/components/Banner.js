@@ -1,35 +1,13 @@
 import React, { useState, useEffect } from "react";
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
+import { useTheme } from "@material-ui/core/styles";
+import IconButton from "@material-ui/core/IconButton";
+import "./Banner.css";
 import Paper from "@material-ui/core/Paper";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import { useTheme } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
 import axios from "axios";
-import useFetch from "react-fetch-hook";
-
-import "./Banner.css";
-import { breakpoints } from "@mui/system";
-
-const MyCollection = [
-	{
-		label: "AVENDATOR",
-		imgPath: "https://wallpaperaccess.com/full/2875411.jpg",
-		venue: "Online",
-		date: "19-12-2021",
-		description: "Hypercar",
-	},
-	{
-		label: "TREX",
-		imgPath:
-			"https://c4.wallpaperflare.com/wallpaper/547/845/242/animal-dinosaur-tyrannosaurus-rex-hd-wallpaper-preview.jpg",
-		venue: "DINOSAURS",
-		date: "1-01-2022",
-		description: "Tyrant king",
-	},
-];
 
 const Banner = () => {
 	const theme = useTheme();
@@ -37,7 +15,7 @@ const Banner = () => {
 	const [data, setData] = React.useState([]);
 	const [loaded, setLoaded] = React.useState(false);
 	const getEvent = async () => {
-		await axios("/event")
+		await axios("/bevent")
 			.then((response) => {
 				setData(response.data);
 				console.log(response.data["image"]);
@@ -61,6 +39,9 @@ const Banner = () => {
 		if (CollectionSize >= 0)
 			setActiveStep((prevActiveStep) => prevActiveStep - 1);
 		else {
+			setActiveStep((prevActiveStep) => prevActiveStep + 1);
+		}
+		if (CollectionSize < 0) {
 			setActiveStep((prevActiveStep) => prevActiveStep + 1);
 		}
 	};
@@ -90,7 +71,7 @@ const Banner = () => {
 							overflow: "hidden",
 							alignItems: "center",
 						}}
-						alt={MyCollection[index].title}
+						alt={data[index].title}
 					/>
 
 					<div className="event-details">{data[index].title}</div>
