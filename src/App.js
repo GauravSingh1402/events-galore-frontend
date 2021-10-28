@@ -3,14 +3,12 @@ import Navbar from "./components/Navbar";
 import Banner from "./components/Banner";
 import Createv from "./components/Createv";
 import Tabs from "./components/Tabs";
-import NoteCard from "./components/NoteCard";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
-import axios from "axios";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { initialState, reducer } from "./reducer/useReducer";
-
+ 
 export const userContext = createContext();
 function App() {
 	const [state, dispatch] = useReducer(reducer, initialState);
@@ -37,6 +35,7 @@ function App() {
 					</Route>
 				</Switch>
 			</Router>
+			
 		</userContext.Provider>
 	);
 }

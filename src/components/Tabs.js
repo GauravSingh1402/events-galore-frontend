@@ -23,18 +23,19 @@ export default function SectionHeading() {
   const [value, setValue] = useState(0);
   return (
     <Container>
-      <AppBar position="static">
+      
         <Tabs
           value={value}
           onChange={handleTabs}
           indicatorColor="secondary"
           textColor="inherit"
           variant="fullWidth"
+          aria-label="full width tabs example"
         >
           <Tab label="Popular Events" {...width(0)} />
           <Tab label="Events This Week" {...width(1)} />
         </Tabs>
-      </AppBar>
+      
       <TabPanel value={value} index={0}> 
       <Grid container spacing={3} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
       {event.map(events=>(
