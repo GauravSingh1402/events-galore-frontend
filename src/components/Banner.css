@@ -59,22 +59,22 @@
     height: 60%;
   }
   .btn-slide {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #f1f1f1;
+    width: 120px;
+    height: 120px;
+    background-color: Transparent;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     z-index: 2;
+    outline: none;
+    border: none;
   }
-  
+ 
   .btn-slide img {
-    width: 25px;
-    height: 25px;
-    pointer-events: none;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
   }
   .prev {
     top: 50%;
