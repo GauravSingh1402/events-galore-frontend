@@ -16,7 +16,7 @@ import logo from "../logo.png";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import LoginIcon from '@mui/icons-material/Login';
+import LoginIcon from "@mui/icons-material/Login";
 function Navbar() {
 	const { state, dispatch } = useContext(userContext);
 	const RenderMenu = () => {
@@ -29,17 +29,38 @@ function Navbar() {
 								<img src={logo} className="logoClass" alt="Events-Galore" />
 							</div>
 							<h1 class="logotitle">Events Galore</h1>
-							{/* <div className="searchb">
-					<SearchIcon />
-					<TextField className="text" placeholder="Search here" />
-				</div> */}
+							<div className="search-bar">
+								<TextField
+									fullWidth
+									id="filled-basic"
+									placeholder="Search..."
+									variant="filled"
+									hiddenLabel
+									InputProps={{
+										startAdornment: (
+											<InputAdornment position="start">
+												<SearchOutlinedIcon className="searchIcon" />
+											</InputAdornment>
+										),
+									}}
+								/>
+							</div>
 							<div className="container">
 								<Button
 									onClick={create_event}
 									variant="contained"
-									color="{primary.dark}"
+									color="primary"
+									startIcon={<AddCircleOutlineIcon />}
 								>
-									CREATE EVENT
+									<span className="textBesideIcon">CREATE EVENT</span>
+								</Button>
+								<Button
+									variant="contained"
+									onClick={logoutredirect}
+									color="primary"
+									startIcon={<LoginIcon />}
+								>
+									Logout
 								</Button>
 								{/* <Button variant="contained" onClick={myprofile}>
 						My Profile{" "}
@@ -52,13 +73,6 @@ function Navbar() {
 							<li>LOGOUT</li>
 						</ul>
 					</div> */}
-								<Button
-									variant="contained"
-									onClick={logoutredirect}
-									color="primary"
-								>
-									Logout
-								</Button>
 							</div>
 							{/* <div className="hamburger">
 								<IconButton onClick={handleClick}>
