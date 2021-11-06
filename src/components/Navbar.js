@@ -13,18 +13,22 @@ import "./Navbar.css";
 import { useHistory, Link } from "react-router-dom";
 import { userContext } from "../App";
 import logo from "../logo.png";
+import InputAdornment from "@mui/material/InputAdornment";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import LoginIcon from '@mui/icons-material/Login';
 function Navbar() {
 	const { state, dispatch } = useContext(userContext);
 	const RenderMenu = () => {
 		if (state) {
 			return (
 				<>
-					<AppBar>
+					<AppBar elevation={20}>
 						<Toolbar className="bar">
 							<div>
 								<img src={logo} className="logoClass" alt="Events-Galore" />
 							</div>
-								<h1 class="logotitle">EVENTS GALORE</h1>
+							<h1 class="logotitle">Events Galore</h1>
 							{/* <div className="searchb">
 					<SearchIcon />
 					<TextField className="text" placeholder="Search here" />
@@ -93,18 +97,35 @@ function Navbar() {
 							<div>
 								<img src={logo} className="logoClass" alt="Events-Galore" />
 							</div>
-								<h1 class="logotitle">EVENTS GALORE</h1>	
+							<h1 class="logotitle">Events Galore</h1>
 							{/* <div className="searchb">
 					<SearchIcon />
 					<TextField className="text" placeholder="Search here" />
 				</div> */}
+							<div className="search-bar">
+								<TextField
+									fullWidth
+									id="filled-basic"
+									placeholder="Search..."
+									variant="filled"
+									hiddenLabel
+									InputProps={{
+										startAdornment: (
+											<InputAdornment position="start">
+												<SearchOutlinedIcon className="searchIcon" />
+											</InputAdornment>
+										),
+									}}
+								/>
+							</div>
 							<div className="container">
 								<Button
 									onClick={create_event}
 									variant="contained"
 									color="primary"
+									startIcon={<AddCircleOutlineIcon />}
 								>
-									CREATE EVENT
+									<span className="textBesideIcon">CREATE EVENT</span>
 								</Button>
 								{/* <Button  color="primary" onClick={myprofile}>
 						My Profile{" "}
@@ -121,6 +142,7 @@ function Navbar() {
 									variant="contained"
 									onClick={loginredirect}
 									color="primary"
+									startIcon={<LoginIcon />}
 								>
 									Login
 								</Button>
