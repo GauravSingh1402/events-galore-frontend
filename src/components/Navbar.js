@@ -33,7 +33,7 @@ function Navbar() {
 								<Button
 									onClick={create_event}
 									variant="contained"
-									color="primary"
+									color="{primary.dark}"
 								>
 									CREATE EVENT
 								</Button>
