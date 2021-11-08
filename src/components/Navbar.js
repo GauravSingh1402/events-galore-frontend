@@ -18,6 +18,8 @@ import InputAdornment from "@mui/material/InputAdornment";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import LoginIcon from "@mui/icons-material/Login";
+import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
+import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 function Navbar() {
 	const { state, dispatch } = useContext(userContext);
 	const [contextState, setContextState] = useState(() => {
@@ -68,10 +70,18 @@ function Navbar() {
 									<span className="textBesideIcon">CREATE EVENT</span>
 								</Button>
 								<Button
+									onClick={myprofile}
+									variant="contained"
+									color="primary"
+									startIcon={<PersonIcon />}
+								>
+									<span className="textBesideIcon">Profile</span>
+								</Button>
+								<Button
 									variant="contained"
 									onClick={logoutredirect}
 									color="primary"
-									startIcon={<LoginIcon />}
+									startIcon={<ExitToAppOutlinedIcon />}
 								>
 									Logout
 								</Button>
@@ -154,14 +164,6 @@ function Navbar() {
 								>
 									<span className="textBesideIcon">CREATE EVENT</span>
 								</Button>
-								<Button
-									onClick={myprofile}
-									variant="contained"
-									color="primary"
-									startIcon={<PersonIcon />}
-								>
-									<span className="textBesideIcon">Profile</span>
-								</Button>
 								{/* <Button  color="primary" onClick={myprofile}>
 						My Profile{" "}
 					</Button> */}
@@ -173,6 +175,14 @@ function Navbar() {
 							<li>LOGOUT</li>
 						</ul>
 					</div> */}
+								<Button
+									variant="contained"
+									onClick={signupredirect}
+									color="primary"
+									startIcon={<LockOpenOutlinedIcon />}
+								>
+									SignUp
+								</Button>
 								<Button
 									variant="contained"
 									onClick={loginredirect}
@@ -231,6 +241,9 @@ function Navbar() {
 	}
 	function loginredirect() {
 		history.push("/login");
+	}
+	function signupredirect() {
+		history.push("/signup");
 	}
 	function logoutredirect() {
 		history.push("/logout");

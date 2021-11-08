@@ -20,6 +20,7 @@ import PhotoCameraIcon from "@material-ui/icons/PhotoCamera";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 const Input = styled("input")({
 	display: "none",
 });
@@ -73,15 +74,7 @@ const useStyles = makeStyles({
 		marginRight: "10%",
 	},
 	submitbtn: {
-		marginTop: 20,
-		marginBottom: 20,
-		fontsize: 20,
-		backgroundColor: "#c62828",
-		color: "white",
-		"&:hover": {
-			color: "white",
-			backgroundColor: "#ef5350",
-		},
+		marginRight: 20,
 	},
 	align: {
 		display: "flex",
@@ -499,11 +492,22 @@ function Createv() {
 					className={classes.submitbtn}
 					type="submit"
 					variant="contained"
-					color="secondary"
+					color="primary"
 					endIcon={<KeyboardArrowRightIcon />}
 					onClick={PostData}
 				>
 					Submit
+				</Button>
+				<Button
+					className={classes.submitbtn}
+					variant="contained"
+					color="secondary"
+					endIcon={<CancelOutlinedIcon />}
+					onClick={() => {
+						history.push("/");
+					}}
+				>
+					CANCEL
 				</Button>
 				<h1>{data.id}</h1>
 			</form>
