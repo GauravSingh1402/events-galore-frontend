@@ -7,6 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
+import PersonIcon from "@mui/icons-material/Person";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import "./Navbar.css";
@@ -140,6 +141,14 @@ function Navbar() {
 									startIcon={<AddCircleOutlineIcon />}
 								>
 									<span className="textBesideIcon">CREATE EVENT</span>
+								</Button>
+								<Button
+									onClick={myprofile}
+									variant="contained"
+									color="primary"
+									startIcon={<PersonIcon/>}
+								>
+									<span className="textBesideIcon">Profile</span>
 								</Button>
 								{/* <Button  color="primary" onClick={myprofile}>
 						My Profile{" "}

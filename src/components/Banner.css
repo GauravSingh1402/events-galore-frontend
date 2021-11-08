@@ -25,6 +25,9 @@
     flex-direction: row;
     margin-right: 30px;
   }
+.timepass::first-letter{
+  text-transform: uppercase;
+}
 .contest{
   height: 100%;
   position: absolute;
@@ -55,9 +58,6 @@
   }
   .active-anim {
     opacity: 1;
-  }
-  .btn{
-    height: 60%;
   }
   .btn-slide {
     width: 120px;

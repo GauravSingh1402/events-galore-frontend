@@ -6,6 +6,8 @@ import Tabs from "./components/Tabs";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
+import Profile from "./components/Profile";
+import UserEvent from "./components/UserEvent";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { initialState, reducer } from "./reducer/useReducer";
  
@@ -18,6 +20,11 @@ function App() {
 				<Switch>
 					<Route exact path="/createv">
 						<Createv />
+					</Route>
+					<Route exact path="/profile">
+						<Navbar/>
+						<Profile/>
+						<UserEvent/>
 					</Route>
 					<Route exact path="/signup">
 						<Signup />
