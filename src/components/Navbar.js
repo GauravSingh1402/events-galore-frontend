@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -20,8 +20,20 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import LoginIcon from "@mui/icons-material/Login";
 function Navbar() {
 	const { state, dispatch } = useContext(userContext);
+	const [contextState, setContextState] = useState(() => {
+		if (state !== null) {
+			window.localStorage.setItem("state", state);
+			return state;
+		}
+	});
+	useEffect(() => {
+		if (state !== null) {
+			setContextState(state);
+			window.localStorage.setItem("state", contextState);
+		}
+	}, [state]);
 	const RenderMenu = () => {
-		if (state) {
+		if (JSON.parse(window.localStorage.getItem("state"))) {
 			return (
 				<>
 					<AppBar elevation={20}>
@@ -146,7 +158,7 @@ function Navbar() {
 									onClick={myprofile}
 									variant="contained"
 									color="primary"
-									startIcon={<PersonIcon/>}
+									startIcon={<PersonIcon />}
 								>
 									<span className="textBesideIcon">Profile</span>
 								</Button>

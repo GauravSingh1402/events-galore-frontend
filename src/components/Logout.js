@@ -15,6 +15,7 @@ const Logout = () => {
 		})
 			.then((res) => {
 				dispatch({ type: "USER", payload: false });
+				window.localStorage.setItem("state", false);
 				history.push("login");
 				if (res.status != 200) {
 					throw res.error;

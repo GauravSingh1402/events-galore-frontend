@@ -23,47 +23,47 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import ScheduleIcon from '@mui/icons-material/Schedule';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import EmailIcon from '@mui/icons-material/Email';
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import ScheduleIcon from "@mui/icons-material/Schedule";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import EmailIcon from "@mui/icons-material/Email";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import GooglePayButton from "@google-pay/button-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-toast.configure()
+toast.configure();
 const useStyles = makeStyles((theme) => ({
-	notetitle:{
+	notetitle: {
 		fontSize: "25px",
 		fontWeight: "bold",
 		margin: 0,
-	  },
-	  noteDescription:{
+	},
+	noteDescription: {
 		fontSize: "17px",
 		margin: 0,
-	  },
-	  media: {
+	},
+	media: {
 		height: 180,
 		marginTop: 0,
-	  },
-	  flexing:{
+	},
+	flexing: {
 		display: "flex",
 		width: "100%",
 		flexDirection: "row",
-		justifyContent: "space-between"
-	  },
-	  flexingagain:{
+		justifyContent: "space-between",
+	},
+	flexingagain: {
 		display: "flex",
 		flexDirection: "row",
-	  },
-	  why: {
+	},
+	why: {
 		fontSize: "20px",
-		'&::first-letter':{
-		  textTransform: "uppercase",
-		}
-	  },
-	  btn: {
+		"&::first-letter": {
+			textTransform: "uppercase",
+		},
+	},
+	btn: {
 		marginRight: 10,
 		marginBottom: 10,
 		float: "right",
@@ -77,100 +77,100 @@ const useStyles = makeStyles((theme) => ({
 			color: "white",
 			backgroundColor: "#1b75bd",
 		},
-	  },
-	  margins: {
+	},
+	margins: {
 		marginLeft: 2,
 		marginBottom: 5,
-	  },
-	  date:{
+	},
+	date: {
 		color: "#2196f3",
-	  },
-	  lastBox:{
+	},
+	lastBox: {
 		width: "100%",
 		display: "flex",
 		flexDirection: "row",
 		justifyContent: "space-between",
-	  },
-	  eventdetail:{
+	},
+	eventdetail: {
 		height: "30em",
 		marginTop: "30em",
 		height: "50em",
 		backgroundColor: "#DDDDDD",
-		zIndex: 2
+		zIndex: 2,
 	},
-	eventalign:{
-	   display: "flex",
-	   flexDirection: "row",
-	   height: "65em",
-	   position: "absolute",
-	   top: "10em",
-	   marginLeft: "1.5em",
-	   zIndex: 2
+	eventalign: {
+		display: "flex",
+		flexDirection: "row",
+		height: "65em",
+		position: "absolute",
+		top: "10em",
+		marginLeft: "1.5em",
+		zIndex: 2,
 	},
-	eventimage:{
+	eventimage: {
 		width: "65%",
 		zIndex: 2,
 		borderRadius: "2rem 0 0 2rem",
 		backgroundColor: "white",
 		height: "100%",
 	},
-	eventbanner:{
-	   borderRadius: "2rem 0 0 0",
-	   width: "100%",
-	   height: "25em",
+	eventbanner: {
+		borderRadius: "2rem 0 0 0",
+		width: "100%",
+		height: "25em",
 	},
-	aboutevent:{
-	   backgroundColor: "#EEEEEE",
-	   width: "35%",
-	   height: "100%",
-	   borderRadius: "0 2rem 2rem 0",
+	aboutevent: {
+		backgroundColor: "#EEEEEE",
+		width: "35%",
+		height: "100%",
+		borderRadius: "0 2rem 2rem 0",
 	},
-	eventinfo:{
+	eventinfo: {
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "space-evenly",
 		alignItems: "center",
 		height: "30em",
 	},
-	eventagain:{
+	eventagain: {
 		display: "flex",
 		flexDirection: "row",
 		width: "100%",
 	},
-	fonting:{
+	fonting: {
 		fontSize: "50px",
 	},
-	eventbutton:{
-		   backgroundColor: "#2196f3",
-		   color: "white",
-		   fontSize: "15px",
-		   paddingLeft: "105px",
-		   paddingRight: "105px",
-		   borderRadius: "15px",
-		   "&:hover": {
+	eventbutton: {
+		backgroundColor: "#2196f3",
+		color: "white",
+		fontSize: "15px",
+		paddingLeft: "105px",
+		paddingRight: "105px",
+		borderRadius: "15px",
+		"&:hover": {
 			color: "white",
 			backgroundColor: "#1b75bd",
 		},
 	},
-	eventdetailinfo:{
+	eventdetailinfo: {
 		paddingTop: "2em",
 	},
-	eventtags:{
+	eventtags: {
 		position: "absolute",
 		width: "60%",
 		height: "30em",
 		display: "flex",
-		flexDirection : "column",
+		flexDirection: "column",
 		justifyContent: "space-evenly",
 	},
-	overlay:{
-	   background: "#0000008a",
-	   position: "absolute",
-	   width: "100%",
-	   height: "30em",
-	   top: 0,
-	   zIndex: 1,
-	 },
+	overlay: {
+		background: "#0000008a",
+		position: "absolute",
+		width: "100%",
+		height: "30em",
+		top: 0,
+		zIndex: 1,
+	},
 }));
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
@@ -188,9 +188,9 @@ export default function NoteCard({ note }) {
 	const theme = useTheme();
 	const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 	const handleClickOpened = () => {
-		var confirmation = confirm("Are you sure");
+		var confirmation = window.confirm("Are you sure");
 		console.log(confirmation);
-		if (confirmation == true){
+		if (confirmation == true) {
 			if (event_type == "paid") {
 				Axios.put("/update", { register_count: register_count, _id: _id });
 				console.log(register_count);
@@ -199,7 +199,7 @@ export default function NoteCard({ note }) {
 				register_count = register_count + 1;
 				Axios.put("/update", { register_count: register_count, _id: _id });
 				console.log(register_count);
-				toast.success('Registered Successfully', {
+				toast.success("Registered Successfully", {
 					position: "top-center",
 					autoClose: 3000,
 					hideProgressBar: false,
@@ -207,7 +207,7 @@ export default function NoteCard({ note }) {
 					pauseOnHover: false,
 					draggable: false,
 					progress: undefined,
-					});
+				});
 			}
 		}
 	};
@@ -224,143 +224,226 @@ export default function NoteCard({ note }) {
 	};
 	const classes = useStyles();
 	let meridiem = "AM";
-  let eventTime = note.time;
-  let stringTime = eventTime.toString();
-  let sliceTime = stringTime.slice(0,2);
-  let sliceTime2 = stringTime.slice(2,5);
-  let noTime = parseInt(sliceTime);
-  if (noTime >= 13){
-    meridiem = "PM";
-    if (noTime == 13){noTime = 1;}
-    if (noTime == 14){noTime = 2;}
-    if (noTime == 15){noTime = 3;}
-    if (noTime == 16){noTime = 4;}
-    if (noTime == 17){noTime = 5;}
-    if (noTime == 18){noTime = 6;}
-    if (noTime == 19){noTime = 7;}
-    if (noTime == 20){noTime = 8;}
-    if (noTime == 21){noTime = 9;}
-    if (noTime == 22){noTime = 10;}
-    if (noTime == 23){noTime = 11;}
-    if (noTime == 24){noTime = 12;}
-  }
-  let modifiedTime = noTime.toString();
-  let finalTime = modifiedTime.concat("").concat(sliceTime2).concat(" ").concat(meridiem);
+	let eventTime = note.time;
+	let stringTime = eventTime.toString();
+	let sliceTime = stringTime.slice(0, 2);
+	let sliceTime2 = stringTime.slice(2, 5);
+	let noTime = parseInt(sliceTime);
+	if (noTime >= 13) {
+		meridiem = "PM";
+		if (noTime == 13) {
+			noTime = 1;
+		}
+		if (noTime == 14) {
+			noTime = 2;
+		}
+		if (noTime == 15) {
+			noTime = 3;
+		}
+		if (noTime == 16) {
+			noTime = 4;
+		}
+		if (noTime == 17) {
+			noTime = 5;
+		}
+		if (noTime == 18) {
+			noTime = 6;
+		}
+		if (noTime == 19) {
+			noTime = 7;
+		}
+		if (noTime == 20) {
+			noTime = 8;
+		}
+		if (noTime == 21) {
+			noTime = 9;
+		}
+		if (noTime == 22) {
+			noTime = 10;
+		}
+		if (noTime == 23) {
+			noTime = 11;
+		}
+		if (noTime == 24) {
+			noTime = 12;
+		}
+	}
+	let modifiedTime = noTime.toString();
+	let finalTime = modifiedTime
+		.concat("")
+		.concat(sliceTime2)
+		.concat(" ")
+		.concat(meridiem);
 
-  let eventDate = note.date;
-  let dateString = eventDate.toString();
-  let sliceYear = dateString.slice(0,4);
-  let sliceMonth = dateString.slice(5,7);
-  let sliceDate = dateString.slice(8,10); 
-  if(sliceMonth == "01"){sliceMonth = "January"}
-  else if(sliceMonth == "02"){sliceMonth = "February"}
-  else if(sliceMonth == "03"){sliceMonth = "March"}
-  else if(sliceMonth == "04"){sliceMonth = "April"}
-  else if(sliceMonth == "05"){sliceMonth = "May"}
-  else if(sliceMonth == "06"){sliceMonth = "June"}
-  else if(sliceMonth == "07"){sliceMonth = "July"}
-  else if(sliceMonth == "08"){sliceMonth = "August"}
-  else if(sliceMonth == "09"){sliceMonth = "September"}
-  else if(sliceMonth == "10"){sliceMonth = "October"}
-  else if(sliceMonth == "11"){sliceMonth = "November"}
-  else if(sliceMonth == "12"){sliceMonth = "December"}
-  let finalDate = sliceDate.concat(" ").concat(sliceMonth).concat(" ").concat(sliceYear);
+	let eventDate = note.date;
+	let dateString = eventDate.toString();
+	let sliceYear = dateString.slice(0, 4);
+	let sliceMonth = dateString.slice(5, 7);
+	let sliceDate = dateString.slice(8, 10);
+	if (sliceMonth == "01") {
+		sliceMonth = "January";
+	} else if (sliceMonth == "02") {
+		sliceMonth = "February";
+	} else if (sliceMonth == "03") {
+		sliceMonth = "March";
+	} else if (sliceMonth == "04") {
+		sliceMonth = "April";
+	} else if (sliceMonth == "05") {
+		sliceMonth = "May";
+	} else if (sliceMonth == "06") {
+		sliceMonth = "June";
+	} else if (sliceMonth == "07") {
+		sliceMonth = "July";
+	} else if (sliceMonth == "08") {
+		sliceMonth = "August";
+	} else if (sliceMonth == "09") {
+		sliceMonth = "September";
+	} else if (sliceMonth == "10") {
+		sliceMonth = "October";
+	} else if (sliceMonth == "11") {
+		sliceMonth = "November";
+	} else if (sliceMonth == "12") {
+		sliceMonth = "December";
+	}
+	let finalDate = sliceDate
+		.concat(" ")
+		.concat(sliceMonth)
+		.concat(" ")
+		.concat(sliceYear);
 	return (
 		<Card>
-      <CardActionArea sx={{backgroundColor: 'white'}}>
-        <CardMedia
-          className={classes.media}
-          image={note.image}
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <h1 className={classes.notetitle} >{note.title}</h1>
-          <Typography className={classes.date}>{finalDate}, {finalTime}</Typography>
-          <p className={classes.noteDescription}>{note.description}</p>
-        </CardContent>
-        <div className={classes.flexing}>
-          <div className={classes.flexingagain}>
-		  &nbsp;&nbsp;&nbsp;
-          <RoomIcon/>
-          &nbsp;
-          <Typography className={classes.why}>{note.isoffline}</Typography>
-          &nbsp;
-          &nbsp;
-		  &nbsp;
-          <AttachMoneyIcon />
-          &nbsp;
-          <Typography className={classes.why}>{note.ispaid}</Typography>
-          </div>
-          <Button variant="contained" className={classes.btn}  onClick={handleClickOpen}>Register</Button>
-        </div>
-        <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
-        <AppBar sx={{ position: 'relative' }}>
-          <Toolbar>
-            <IconButton
-              edge="start"
-              color="inherit"
-              onClick={handleClose}
-              aria-label="close"
-            >
-              <CloseIcon />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-        <div style={{backgroundImage:`url(${note.image})` ,backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%', height: "30em",}}>
-            <div className={classes.eventdetail}>
-            <Container className={classes.eventalign}>
-                <div className={classes.eventimage}>
-                    <img className={classes.eventbanner} src={note.image}/>
-                    <Container>
-                    <Typography className={classes.eventdetailinfo} variant="h5">Event Details:</Typography>
-                    <Typography className={classes.eventdetailinfo}variant="h6">{note.description}</Typography>
-                    <div className={classes.eventtags}>
-                    <div>
-					<Typography variant="h5">Tags</Typography>
-					<br/>
-                    <div>
-                    <Chip label={note.tags} />
-                    </div>
+			<CardActionArea sx={{ backgroundColor: "white" }}>
+				<CardMedia
+					className={classes.media}
+					image={note.image}
+					title="Contemplative Reptile"
+				/>
+				<CardContent>
+					<h1 className={classes.notetitle}>{note.title}</h1>
+					<Typography className={classes.date}>
+						{finalDate}, {finalTime}
+					</Typography>
+					<p className={classes.noteDescription}>{note.description}</p>
+				</CardContent>
+				<div className={classes.flexing}>
+					<div className={classes.flexingagain}>
+						&nbsp;&nbsp;&nbsp;
+						<RoomIcon />
+						&nbsp;
+						<Typography className={classes.why}>{note.isoffline}</Typography>
+						&nbsp; &nbsp; &nbsp;
+						<AttachMoneyIcon />
+						&nbsp;
+						<Typography className={classes.why}>{note.ispaid}</Typography>
 					</div>
-					<div className={classes.eventagain}>
-					<Typography variant="h5">Event Speaker:</Typography>
-					&nbsp;&nbsp;
-                    <Typography variant="h6">{note.eventspeaker}</Typography>
-					</div>
-                    <div>
-					<Typography variant="h5">Contact the Orgainzer</Typography>
-                    <div className={classes.eventagain}>
-                    <EmailIcon sx={{ fontSize: 30 }}/>
-                    <Typography variant="h6">{note.contact}</Typography>
-                    </div>
-					</div>
-                    </div>
-                    </Container>
-                </div>
-                <div className={classes.aboutevent}>
-                <Container className={classes.eventinfo}>
-                   <h1 className={classes.fonting}>{note.title}</h1>
-                   <div className={classes.eventagain}>
-                       <CalendarTodayIcon sx={{ fontSize: 30 }}/>
-                       <Typography variant="h5">{finalDate}</Typography>
-                   </div>
-                   <div className={classes.eventagain}>
-                       <ScheduleIcon sx={{ fontSize: 30 }}/>
-                       <Typography variant="h5">{finalTime}</Typography>
-                   </div>
-                   <div className={classes.eventagain}>
-                       <LocationOnIcon sx={{ fontSize: 30 }}/>
-                       <Typography variant="h5">{note.link}</Typography>
-                   </div>
-                   <div className={classes.eventagain}>
-                       <PersonIcon sx={{ fontSize: 30 }}/>
-                       <Typography variant="h5">by {note.username}</Typography>
-                   </div>
-                   <div className={classes.eventagain}>
-                       <AttachMoneyIcon sx={{ fontSize: 30 }}/>
-                       <Typography variant="h5">{note.ispaid}</Typography>
-                   </div>
-                   <Button variant="contained" className={classes.eventbutton} onClick={handleClickOpened}>Register</Button>
+					<Button
+						variant="contained"
+						className={classes.btn}
+						onClick={handleClickOpen}
+					>
+						Register
+					</Button>
+				</div>
+				<Dialog
+					fullScreen
+					open={open}
+					onClose={handleClose}
+					TransitionComponent={Transition}
+				>
+					<AppBar sx={{ position: "relative" }}>
+						<Toolbar>
+							<IconButton
+								edge="start"
+								color="inherit"
+								onClick={handleClose}
+								aria-label="close"
+							>
+								<CloseIcon />
+							</IconButton>
+						</Toolbar>
+					</AppBar>
+					<div
+						style={{
+							backgroundImage: `url(${note.image})`,
+							backgroundRepeat: "no-repeat",
+							backgroundSize: "100% 100%",
+							height: "30em",
+						}}
+					>
+						<div className={classes.eventdetail}>
+							<Container className={classes.eventalign}>
+								<div className={classes.eventimage}>
+									<img className={classes.eventbanner} src={note.image} />
+									<Container>
+										<Typography
+											className={classes.eventdetailinfo}
+											variant="h5"
+										>
+											Event Details:
+										</Typography>
+										<Typography
+											className={classes.eventdetailinfo}
+											variant="h6"
+										>
+											{note.description}
+										</Typography>
+										<div className={classes.eventtags}>
+											<div>
+												<Typography variant="h5">Tags</Typography>
+												<br />
+												<div>
+													<Chip label={note.tags} />
+												</div>
+											</div>
+											<div className={classes.eventagain}>
+												<Typography variant="h5">Event Speaker:</Typography>
+												&nbsp;&nbsp;
+												<Typography variant="h6">
+													{note.eventspeaker}
+												</Typography>
+											</div>
+											<div>
+												<Typography variant="h5">
+													Contact the Orgainzer
+												</Typography>
+												<div className={classes.eventagain}>
+													<EmailIcon sx={{ fontSize: 30 }} />
+													<Typography variant="h6">{note.contact}</Typography>
+												</div>
+											</div>
+										</div>
+									</Container>
+								</div>
+								<div className={classes.aboutevent}>
+									<Container className={classes.eventinfo}>
+										<h1 className={classes.fonting}>{note.title}</h1>
+										<div className={classes.eventagain}>
+											<CalendarTodayIcon sx={{ fontSize: 30 }} />
+											<Typography variant="h5">{finalDate}</Typography>
+										</div>
+										<div className={classes.eventagain}>
+											<ScheduleIcon sx={{ fontSize: 30 }} />
+											<Typography variant="h5">{finalTime}</Typography>
+										</div>
+										<div className={classes.eventagain}>
+											<LocationOnIcon sx={{ fontSize: 30 }} />
+											<Typography variant="h5">{note.link}</Typography>
+										</div>
+										<div className={classes.eventagain}>
+											<PersonIcon sx={{ fontSize: 30 }} />
+											<Typography variant="h5">by {note.username}</Typography>
+										</div>
+										<div className={classes.eventagain}>
+											<AttachMoneyIcon sx={{ fontSize: 30 }} />
+											<Typography variant="h5">{note.ispaid}</Typography>
+										</div>
+										<Button
+											variant="contained"
+											className={classes.eventbutton}
+											onClick={handleClickOpened}
+										>
+											Register
+										</Button>
 										<Dialog
 											fullScreen={fullScreen}
 											open={opened}
@@ -448,21 +531,24 @@ export default function NoteCard({ note }) {
 												</Button>
 											</DialogActions>
 										</Dialog>
-                </Container>
-                </div>
-            </Container>     
-            </div>
-            <div className={classes.overlay}></div>        
-        </div>
-      </Dialog>
-      </CardActionArea>
-      <CardActions sx={{border: 1,borderColor: '#eeeeee'}} className={classes.cardActions}>
-        <div className={classes.lastBox}>
-          <Chip icon={<PersonIcon />} label={note.username} />
-          <Chip icon={<PeopleAltIcon />} label={text3}/>
-        </div>
-      </CardActions>
-	  <ToastContainer></ToastContainer>
-    </Card>
+									</Container>
+								</div>
+							</Container>
+						</div>
+						<div className={classes.overlay}></div>
+					</div>
+				</Dialog>
+			</CardActionArea>
+			<CardActions
+				sx={{ border: 1, borderColor: "#eeeeee" }}
+				className={classes.cardActions}
+			>
+				<div className={classes.lastBox}>
+					<Chip icon={<PersonIcon />} label={note.username} />
+					<Chip icon={<PeopleAltIcon />} label={text3} />
+				</div>
+			</CardActions>
+			<ToastContainer></ToastContainer>
+		</Card>
 	);
 }
