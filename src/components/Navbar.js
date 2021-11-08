@@ -21,6 +21,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 function Navbar() {
+	const history = useHistory();
 	const { state, dispatch } = useContext(userContext);
 	const [contextState, setContextState] = useState(() => {
 		if (state !== null) {
@@ -38,12 +39,26 @@ function Navbar() {
 		if (JSON.parse(window.localStorage.getItem("state"))) {
 			return (
 				<>
-					<AppBar elevation={20}>
+					<AppBar elevation={2}>
 						<Toolbar className="bar">
 							<div>
-								<img src={logo} className="logoClass" alt="Events-Galore" />
+								<img
+									onClick={() => {
+										history.push("/");
+									}}
+									src={logo}
+									className="logoClass"
+									alt="Events-Galore"
+								/>
 							</div>
-							<h1 class="logotitle">Events Galore</h1>
+							<h1
+								onClick={() => {
+									history.push("/");
+								}}
+								class="logotitle"
+							>
+								Events Galore
+							</h1>
 							<div className="search-bar">
 								<TextField
 									fullWidth
@@ -132,9 +147,23 @@ function Navbar() {
 					<AppBar>
 						<Toolbar className="bar">
 							<div>
-								<img src={logo} className="logoClass" alt="Events-Galore" />
+								<img
+									onClick={() => {
+										history.push("/");
+									}}
+									src={logo}
+									className="logoClass"
+									alt="Events-Galore"
+								/>
 							</div>
-							<h1 class="logotitle">Events Galore</h1>
+							<h1
+								onClick={() => {
+									history.push("/");
+								}}
+								class="logotitle"
+							>
+								Events Galore
+							</h1>
 							{/* <div className="searchb">
 					<SearchIcon />
 					<TextField className="text" placeholder="Search here" />
@@ -224,7 +253,6 @@ function Navbar() {
 		}
 	};
 
-	const history = useHistory();
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 	const handleClick = (event) => {
