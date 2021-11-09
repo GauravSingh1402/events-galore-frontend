@@ -33,6 +33,9 @@ const useStyles = makeStyles({
 			flexDirection: "column",
 		},
 	},
+	buttonContainer: {
+		display: "flex",
+	},
 	formInput: {
 		marginLeft: "25%",
 	},
@@ -75,6 +78,7 @@ const useStyles = makeStyles({
 	},
 	submitbtn: {
 		marginRight: 20,
+		width: 100,
 	},
 	align: {
 		display: "flex",
@@ -488,27 +492,29 @@ function Createv() {
 					onChange={handleInputs}
 					required
 				/>
-				<Button
-					className={classes.submitbtn}
-					type="submit"
-					variant="contained"
-					color="primary"
-					endIcon={<KeyboardArrowRightIcon />}
-					onClick={PostData}
-				>
-					Submit
-				</Button>
-				<Button
-					className={classes.submitbtn}
-					variant="contained"
-					color="secondary"
-					endIcon={<CancelOutlinedIcon />}
-					onClick={() => {
-						history.push("/");
-					}}
-				>
-					CANCEL
-				</Button>
+				<div className="buttonContainer">
+					<Button
+						className={classes.submitbtn}
+						type="submit"
+						variant="contained"
+						color="primary"
+						endIcon={<KeyboardArrowRightIcon />}
+						onClick={PostData}
+					>
+						Submit
+					</Button>
+					<Button
+						className={classes.submitbtn}
+						variant="contained"
+						color="secondary"
+						endIcon={<CancelOutlinedIcon />}
+						onClick={() => {
+							history.push("/");
+						}}
+					>
+						CANCEL
+					</Button>
+				</div>
 				<h1>{data.id}</h1>
 			</form>
 		</Container>
