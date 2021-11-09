@@ -26,6 +26,10 @@
 	/* width: 20rem; */
 }
 
+.logoClass, .logotitle{
+	cursor: pointer;
+}
+
 .container button {
 	margin: 0 2rem;
 	background-color: #1b75bd;

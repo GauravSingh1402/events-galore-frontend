@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -18,18 +18,47 @@ import InputAdornment from "@mui/material/InputAdornment";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import LoginIcon from "@mui/icons-material/Login";
+import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
+import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 function Navbar() {
+	const history = useHistory();
 	const { state, dispatch } = useContext(userContext);
+	const [contextState, setContextState] = useState(() => {
+		if (state !== null) {
+			window.localStorage.setItem("state", state);
+			return state;
+		}
+	});
+	useEffect(() => {
+		if (state !== null) {
+			setContextState(state);
+			window.localStorage.setItem("state", contextState);
+		}
+	}, [state]);
 	const RenderMenu = () => {
-		if (state) {
+		if (JSON.parse(window.localStorage.getItem("state"))) {
 			return (
 				<>
-					<AppBar elevation={20}>
+					<AppBar elevation={2}>
 						<Toolbar className="bar">
 							<div>
-								<img src={logo} className="logoClass" alt="Events-Galore" />
+								<img
+									onClick={() => {
+										history.push("/");
+									}}
+									src={logo}
+									className="logoClass"
+									alt="Events-Galore"
+								/>
 							</div>
-							<h1 class="logotitle">Events Galore</h1>
+							<h1
+								onClick={() => {
+									history.push("/");
+								}}
+								class="logotitle"
+							>
+								Events Galore
+							</h1>
 							<div className="search-bar">
 								<TextField
 									fullWidth
@@ -56,10 +85,18 @@ function Navbar() {
 									<span className="textBesideIcon">CREATE EVENT</span>
 								</Button>
 								<Button
+									onClick={myprofile}
+									variant="contained"
+									color="primary"
+									startIcon={<PersonIcon />}
+								>
+									<span className="textBesideIcon">Profile</span>
+								</Button>
+								<Button
 									variant="contained"
 									onClick={logoutredirect}
 									color="primary"
-									startIcon={<LoginIcon />}
+									startIcon={<ExitToAppOutlinedIcon />}
 								>
 									Logout
 								</Button>
@@ -110,9 +147,23 @@ function Navbar() {
 					<AppBar>
 						<Toolbar className="bar">
 							<div>
-								<img src={logo} className="logoClass" alt="Events-Galore" />
+								<img
+									onClick={() => {
+										history.push("/");
+									}}
+									src={logo}
+									className="logoClass"
+									alt="Events-Galore"
+								/>
 							</div>
-							<h1 class="logotitle">Events Galore</h1>
+							<h1
+								onClick={() => {
+									history.push("/");
+								}}
+								class="logotitle"
+							>
+								Events Galore
+							</h1>
 							{/* <div className="searchb">
 					<SearchIcon />
 					<TextField className="text" placeholder="Search here" />
@@ -142,14 +193,6 @@ function Navbar() {
 								>
 									<span className="textBesideIcon">CREATE EVENT</span>
 								</Button>
-								<Button
-									onClick={myprofile}
-									variant="contained"
-									color="primary"
-									startIcon={<PersonIcon/>}
-								>
-									<span className="textBesideIcon">Profile</span>
-								</Button>
 								{/* <Button  color="primary" onClick={myprofile}>
 						My Profile{" "}
 					</Button> */}
@@ -161,6 +204,14 @@ function Navbar() {
 							<li>LOGOUT</li>
 						</ul>
 					</div> */}
+								<Button
+									variant="contained"
+									onClick={signupredirect}
+									color="primary"
+									startIcon={<LockOpenOutlinedIcon />}
+								>
+									SignUp
+								</Button>
 								<Button
 									variant="contained"
 									onClick={loginredirect}
@@ -202,7 +253,6 @@ function Navbar() {
 		}
 	};
 
-	const history = useHistory();
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 	const handleClick = (event) => {
@@ -219,6 +269,9 @@ function Navbar() {
 	}
 	function loginredirect() {
 		history.push("/login");
+	}
+	function signupredirect() {
+		history.push("/signup");
 	}
 	function logoutredirect() {
 		history.push("/logout");

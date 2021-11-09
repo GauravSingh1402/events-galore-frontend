@@ -1,4 +1,4 @@
-import React, { Component, createContext, useReducer } from "react";
+import React, { createContext, useReducer } from "react";
 import Navbar from "./components/Navbar";
 import Banner from "./components/Banner";
 import Createv from "./components/Createv";
@@ -10,7 +10,7 @@ import Profile from "./components/Profile";
 import UserEvent from "./components/UserEvent";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { initialState, reducer } from "./reducer/useReducer";
- 
+
 export const userContext = createContext();
 function App() {
 	const [state, dispatch] = useReducer(reducer, initialState);
@@ -22,9 +22,9 @@ function App() {
 						<Createv />
 					</Route>
 					<Route exact path="/profile">
-						<Navbar/>
-						<Profile/>
-						<UserEvent/>
+						<Navbar />
+						<Profile />
+						<UserEvent />
 					</Route>
 					<Route exact path="/signup">
 						<Signup />

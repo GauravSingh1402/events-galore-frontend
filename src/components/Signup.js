@@ -159,7 +159,7 @@ export default function Signup() {
 							</Grid>
 							<Grid item xs={12} textAlign="center">
 								<NavLink variant="body2" to="/login">
-									Already have an account? Sign in
+									<p align="center">Already have an account? Sign in</p>
 								</NavLink>
 							</Grid>
 						</Grid>
