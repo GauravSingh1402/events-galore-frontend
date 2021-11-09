@@ -21,6 +21,9 @@ import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 const Input = styled("input")({
 	display: "none",
 });
@@ -138,6 +141,7 @@ function Createv() {
 				method: "POST",
 				body: JSON.stringify({ data: base64EncodedImage }),
 				headers: { "Content-Type": "application/json" },
+				limit: '50mb',
 			});
 		} catch (error) {
 			console.log(error);
@@ -236,12 +240,20 @@ function Createv() {
 			console.log("EVENT CREATION FAILED");
 		}
 		if (data.status === 200 || data.status === 201) {
+			toast.success("Event created", {
+				position: "top-center",
+				autoClose: 3000,
+			});
+			setTimeout(() => {
+				history.push("/");
+			}, 3000);
 			console.log("ZA WARUDOO!!!!");
-			history.push("/");
-		} else {
-			window.alert("something went wrong");
-		}
-	};
+	} 
+	else {
+		window.alert("Event creation failed");
+	}}
+			
+		
 	return (
 		<Container className={classes.container}>
 			<form className="form">
@@ -511,6 +523,7 @@ function Createv() {
 				</Button>
 				<h1>{data.id}</h1>
 			</form>
+			<ToastContainer></ToastContainer>
 		</Container>
 	);
 }
