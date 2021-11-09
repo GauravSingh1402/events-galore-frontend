@@ -188,7 +188,7 @@ export default function NoteCard({ note }) {
 	const theme = useTheme();
 	const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 	const handleClickOpened = () => {
-		var confirmation = confirm("Are you sure");
+		var confirmation = window.confirm("Are you sure");
 		console.log(confirmation);
 		if (confirmation == true){
 			if (event_type == "paid") {
