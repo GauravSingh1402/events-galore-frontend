@@ -7,7 +7,8 @@ import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import axios from "axios";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useHistory } from "react-router";
 import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
@@ -39,26 +40,22 @@ export default function Profile() {
 	};
 	var usern = userInfo.username;
 	console.log(usern);
-	const  Userevent = async () => {
+	const Userevent = async () => {
 		console.log(usern);
-		console.log('sending')
+		console.log("sending");
 		try {
 			await fetch("/userevent", {
 				method: "POST",
-				body: JSON.stringify({usern}),
+				body: JSON.stringify({ usern }),
 				headers: { "Content-Type": "application/json" },
-				limit: '50mb',
+				limit: "50mb",
 			});
 		} catch (error) {
 			console.log(error);
 		}
 
-	
-		console.log('sent');
-		
-		
-	
-	}
+		console.log("sent");
+	};
 	Userevent();
 
 	useEffect(() => {
@@ -67,7 +64,43 @@ export default function Profile() {
 	useEffect(() => {
 		Userevent();
 	}, []);
-	
+/*To comment*/
+	const PostData = async (e) => {
+		console.log("submitted");
+		// e.preventDefault();
+
+		const { firstname, lastname, username, email, password } = userInfo;
+		const res = await fetch("/profile", {
+			method: "POST",
+			headers: {
+				"Content-type": "application/json",
+			},
+			body: JSON.stringify({
+				firstname,
+				lastname,
+				username,
+				email,
+				password,
+			}),
+		});
+		const data = await res.json();
+		if (res.status === 422 || !data) {
+			alert("User Update Failed");
+			console.log("User Update Failed");
+		}
+		if (data.status === 200 || data.status === 201) {
+			toast.success("Uesr updated", {
+				position: "top-center",
+				autoClose: 3000,
+			});
+
+			console.log("ZA WARUDOO!!!!");
+		} else {
+			window.alert("User updation failed");
+		}
+	};
+/*To comment*/
+/*Remove update button, remove onChange attr, make value as placeholder and/or textfield disabled*/
 	return (
 		<div>
 			<Box className="form">
@@ -92,6 +125,9 @@ export default function Profile() {
 					</Typography>
 					<TextField
 						value={userInfo.firstname}
+						onChange={(e) =>
+							setUserInfo({ ...userInfo, firstname: e.target.value })
+						}
 						style={{ width: 750, backgroundColor: "white" }}
 						variant="outlined"
 					></TextField>
@@ -106,6 +142,9 @@ export default function Profile() {
 					</Typography>
 					<TextField
 						value={userInfo.lastname}
+						onChange={(e) =>
+							setUserInfo({ ...userInfo, lastname: e.target.value })
+						}
 						style={{ width: 750, backgroundColor: "white" }}
 						variant="outlined"
 					></TextField>
@@ -120,6 +159,9 @@ export default function Profile() {
 					</Typography>
 					<TextField
 						value={userInfo.email}
+						onChange={(e) =>
+							setUserInfo({ ...userInfo, email: e.target.value })
+						}
 						style={{ width: 750, backgroundColor: "white" }}
 						variant="outlined"
 					></TextField>
@@ -145,6 +187,7 @@ export default function Profile() {
 						color="primary"
 						endIcon={<ArrowRightAltIcon />}
 						size="large"
+						onClick={PostData}
 					>
 						UPDATE DETAILS
 					</Button>
