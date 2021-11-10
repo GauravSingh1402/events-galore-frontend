@@ -5,7 +5,7 @@ import NoteCard from "./NoteCard";
 export default function UserEvent() {
   const [event,setEvent] = useState([]);
   useEffect(()=> {
-    fetch("/userevent")
+    fetch("/usrevent")
     .then(res=>res.json())
     .then(data=>setEvent(data))
   },[]);

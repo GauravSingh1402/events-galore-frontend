@@ -41,19 +41,21 @@ export default function Profile() {
 	console.log(usern);
 	const  Userevent = async () => {
 		console.log(usern);
-		try
-		{
-			console.log('sending')
-			await fetch("/userevent",{
-				method:"POST",
-				headers:{"Content-Type": "application/json"},
-				body : JSON.stringify(usern)
-			}).then(res=>res.json()).then(data=>console.log(data))
-			console.log('sent');
-		}catch(error)
-		{
+		console.log('sending')
+		try {
+			await fetch("/userevent", {
+				method: "POST",
+				body: JSON.stringify({usern}),
+				headers: { "Content-Type": "application/json" },
+				limit: '50mb',
+			});
+		} catch (error) {
 			console.log(error);
 		}
+
+	
+		console.log('sent');
+		
 		
 	
 	}
