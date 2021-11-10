@@ -152,9 +152,6 @@ const useStyles = makeStyles((theme) => ({
 			backgroundColor: "#1b75bd",
 		},
 	},
-	eventdetailinfo: {
-		paddingTop: "2em",
-	},
 	eventtags: {
 		position: "absolute",
 		width: "60%",
@@ -312,13 +309,13 @@ export default function NoteCard({ note }) {
 		.concat(sliceYear);
 	return (
 		<Card>
-			<CardActionArea sx={{ backgroundColor: "white" }}>
+			<CardActionArea sx={{ backgroundColor: "white"}}>
 				<CardMedia
 					className={classes.media}
 					image={note.image}
 					title="Contemplative Reptile"
 				/>
-				<CardContent>
+				<CardContent sx={{ minHeight: "18em" }}>
 					<h1 className={classes.notetitle}>{note.title}</h1>
 					<Typography className={classes.date}>
 						{finalDate}, {finalTime}
