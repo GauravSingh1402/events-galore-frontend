@@ -414,8 +414,8 @@ export default function NoteCard({ note }) {
 									</Container>
 								</div>
 								<div className={classes.aboutevent}>
-									<Container className={classes.eventinfo}>
-										<h1 className={classes.fonting}>{note.title}</h1>
+										<Container className={classes.eventinfo}>
+									<h1 className={classes.fonting}>{note.title}</h1>
 										<div className={classes.eventagain}>
 											<CalendarTodayIcon sx={{ fontSize: 30 }} />
 											<Typography variant="h5">{finalDate}</Typography>

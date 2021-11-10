@@ -45,7 +45,7 @@ export default function Profile() {
 		try {
 			await fetch("/userevent", {
 				method: "POST",
-				body: JSON.stringify({data:usern}),
+				body: JSON.stringify({usern}),
 				headers: { "Content-Type": "application/json" },
 				limit: '50mb',
 			});
