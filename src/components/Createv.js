@@ -418,9 +418,7 @@ const [wtag, setTags] = React.useState([]);
 				position: "top-center",
 				autoClose: 3000,
 			});
-			setTimeout(() => {
-				history.push("/");
-			}, 3000);
+			
 			console.log("ZA WARUDOO!!!!");
 	} 
 	else {

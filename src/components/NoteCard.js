@@ -78,9 +78,6 @@ const useStyles = makeStyles((theme) => ({
 			backgroundColor: "#1b75bd",
 		},
 	},
-	eventtagdisplay:{
-		border: "2px solid red",
-	},
 	margins: {
 		marginLeft: 2,
 		marginBottom: 5,
@@ -394,7 +391,7 @@ export default function NoteCard({ note }) {
 												<Typography variant="h5">Tags</Typography>
 												<br />
 												<div className={classes.eventtagdisplay}>
-											<Chip icon={<PeopleAltIcon />} label={note.tags}/>
+													<h3>{note.tags}</h3>
 												</div>
 											</div>
 											<div className={classes.eventagain}>
