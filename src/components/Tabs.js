@@ -37,7 +37,7 @@ export default function SectionHeading() {
   
   const [eventweek,setEventweek] = useState([]);
   useEffect(()=> {
-    fetch("/pevent")
+    fetch("/event")
     .then(res=>res.json())
     .then(data=>setEventweek(data))
   },[]);

@@ -172,7 +172,8 @@ const useStyles = makeStyles((theme) => ({
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
 });
-export default function NoteCard({ note }) {
+export default function UserNotecard({ note }) {
+	console.log(note);
 	let _id = note._id;
 	let event_type = note.ispaid;
 	let register_count = note.no_of_users;
@@ -188,24 +189,7 @@ export default function NoteCard({ note }) {
 		var confirmation = window.confirm("Are you sure");
 		console.log(confirmation);
 		if (confirmation == true) {
-			if (event_type == "paid") {
-				Axios.put("/update", { register_count: register_count, _id: _id });
-				console.log(register_count);
 				setOpened(true);
-			} else {
-				register_count = register_count + 1;
-				Axios.put("/update", { register_count: register_count, _id: _id });
-				console.log(register_count);
-				toast.success("Registered Successfully", {
-					position: "top-center",
-					autoClose: 3000,
-					hideProgressBar: false,
-					closeOnClick: true,
-					pauseOnHover: false,
-					draggable: false,
-					progress: undefined,
-				});
-			}
 		}
 	};
 
@@ -338,7 +322,7 @@ export default function NoteCard({ note }) {
 						className={classes.btn}
 						onClick={handleClickOpen}
 					>
-						Register
+						Event Details
 					</Button>
 				</div>
 				<Dialog
@@ -439,7 +423,7 @@ export default function NoteCard({ note }) {
 											className={classes.eventbutton}
 											onClick={handleClickOpened}
 										>
-											Register
+											Cancel Event
 										</Button>
 										<Dialog
 											fullScreen={fullScreen}
@@ -451,6 +435,7 @@ export default function NoteCard({ note }) {
 												{"PAID-EVENTS PORTAL"}
 											</DialogTitle>
 											<DialogContent>
+												<Typography>For cancelling event you need to pay Rs.100 as compensation</Typography>
 												<DialogContentText>
 													<GooglePayButton
 														environment="TEST"
