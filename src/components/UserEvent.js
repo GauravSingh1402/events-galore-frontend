@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Typography,Tab, Tabs,Grid, Container } from "@material-ui/core";
 import axios from 'axios';
-import UserNotecard from "./UserNotecard";
+import Notecard from "./NoteCard";
 import { makeStyles } from "@material-ui/core/styles";
 import { createTheme } from '@mui/material/styles';
 
@@ -59,7 +59,7 @@ export default function UserEvent() {
       <Grid  className={classes.cardpanel} container spacing={3} rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
       {event.map(events=>(
             <Grid item xs={12} sm={6} md={4} key={events._id}>
-              <UserNotecard note={events}/>
+              <Notecard note={events}/>
             </Grid> 
       ))}    
       </Grid>
