@@ -193,6 +193,7 @@ const classing = useStyles();
     .then(res=>res.json())
     .then(data=>setEvent(data))
   },[]);
+  const [current_index, setActiveStep] = React.useState(0);
   const [open, setOpen] = useState(false);
             const [opened, setOpened] = React.useState(false);
  const nextSlide = () => {
@@ -217,13 +218,10 @@ const classing = useStyles();
     return (
     <div className="container-slider">
         {event.map((obj, index) => {
-            setCurrent({...current,obj});
             let _id = obj._id;
             let event_type = obj.ispaid;
             let register_count = obj.no_of_users;
             let rupee = obj.cost;
-        
-           
             const handleClickOpened = () => {
                 var confirmation = window.confirm("Are you sure");
                 console.log(confirmation);
@@ -253,6 +251,7 @@ const classing = useStyles();
                 setOpened(false);
             };
             const handleClickOpen = () => {
+				setActiveStep(index);
                 setOpen(true);
             };
         
@@ -346,10 +345,9 @@ const classing = useStyles();
 							</IconButton>
 						</Toolbar>
 					</AppBar>
-					{current.map((current, index)=>{
                         <div
 						style={{
-							backgroundImage: `url(${current.image})`,
+							backgroundImage: `url(${event[current_index].image})`,
 							backgroundRepeat: "no-repeat",
 							backgroundSize: "100% 100%",
 							height: "30em",
@@ -358,7 +356,7 @@ const classing = useStyles();
 						<div className={classing.eventdetail}>
 							<Container className={classing.eventalign}>
 								<div className={classing.eventimage}>
-									<img className={classing.eventbanner} src={current.image} />
+									<img className={classing.eventbanner} src={event[current_index].image} />
 									<Container>
 										<Typography
 											className={classing.eventdetailinfo}
@@ -370,21 +368,21 @@ const classing = useStyles();
 											className={classing.eventdetailinfo}
 											variant="h6"
 										>
-											{obj.description}
+											{event[current_index].description}
 										</Typography>
 										<div className={classing.eventtags}>
 											<div>
 												<Typography variant="h5">Tags</Typography>
 												<br />
 												<div>
-													<Chip label={obj.tags} />
+													<Chip label={event[current_index].tags} />
 												</div>
 											</div>
 											<div className={classing.eventagain}>
 												<Typography variant="h5">Event Speaker:</Typography>
 												&nbsp;&nbsp;
 												<Typography variant="h6">
-													{obj.eventspeaker}
+													{event[current_index].eventspeaker}
 												</Typography>
 											</div>
 											<div>
@@ -393,7 +391,7 @@ const classing = useStyles();
 												</Typography>
 												<div className={classing.eventagain}>
 													<EmailIcon sx={{ fontSize: 30 }} />
-													<Typography variant="h6">{obj.contact}</Typography>
+													<Typography variant="h6">{event[current_index].contact}</Typography>
 												</div>
 											</div>
 										</div>
@@ -401,26 +399,26 @@ const classing = useStyles();
 								</div>
 								<div className={classing.aboutevent}>
 									<Container className={classing.eventinfo}>
-										<h1 className={classing.fonting}>{obj.title}</h1>
+										<h1 className={classing.fonting}>{event[current_index].title}</h1>
 										<div className={classing.eventagain}>
 											<CalendarTodayIcon sx={{ fontSize: 30 }} />
-											<Typography variant="h5">{finalDate}</Typography>
+											<Typography variant="h5">{event[current_index].date}</Typography>
 										</div>
 										<div className={classing.eventagain}>
 											<ScheduleIcon sx={{ fontSize: 30 }} />
-											<Typography variant="h5">{finalTime}</Typography>
+											<Typography variant="h5">{event[current_index].time}</Typography>
 										</div>
 										<div className={classing.eventagain}>
 											<LocationOnIcon sx={{ fontSize: 30 }} />
-											<Typography variant="h5">{obj.link}</Typography>
+											<Typography variant="h5">{event[current_index].link}</Typography>
 										</div>
 										<div className={classing.eventagain}>
 											<PersonIcon sx={{ fontSize: 30 }} />
-											<Typography variant="h5">by {obj.username}</Typography>
+											<Typography variant="h5">by {event[current_index].username}</Typography>
 										</div>
 										<div className={classing.eventagain}>
 											<AttachMoneyIcon sx={{ fontSize: 30 }} />
-											<Typography variant="h5">{obj.ispaid}</Typography>
+											<Typography variant="h5">{event[current_index].ispaid}</Typography>
 										</div>
 										<Button
 											variant="contained"
@@ -522,7 +520,6 @@ const classing = useStyles();
 						</div>
 						<div className={classing.overlayed}></div>
 					</div>
-                    })}
 				</Dialog>
 
 
@@ -530,7 +527,7 @@ const classing = useStyles();
 
 
                             &nbsp;&nbsp;
-                            <Button className={classing.bannerbtn} variant="contained">Register Now</Button>
+                            <Button className={classing.bannerbtn} variant="contained" onClick={handleClickOpened}>Register Now</Button>
                         </div>
                         <div className="content3">
                             <LocationOnIcon fontSize="large"  style={{color: 'white'}}/>
