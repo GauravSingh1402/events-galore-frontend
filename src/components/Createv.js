@@ -23,8 +23,8 @@ import { useHistory } from "react-router-dom";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-toast.configure();
 import GooglePayButton from "@google-pay/button-react";
+toast.configure();
 const Input = styled("input")({
 	display: "none",
 });

@@ -69,7 +69,7 @@ function Navbar() {
 									InputProps={{
 										startAdornment: (
 											<InputAdornment position="start">
-												<SearchOutlinedIcon className="searchIcon" />
+												<SearchOutlinedIcon  className="searchIcon" />
 											</InputAdornment>
 										),
 									}}
