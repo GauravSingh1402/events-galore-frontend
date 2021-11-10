@@ -59,7 +59,7 @@ function Navbar() {
 							>
 								Events Galore
 							</h1>
-							<div className="search-bar">
+							{/* <div className="search-bar">
 								<TextField
 									fullWidth
 									id="filled-basic"
@@ -74,7 +74,7 @@ function Navbar() {
 										),
 									}}
 								/>
-							</div>
+							</div> */}
 							<div className="container">
 								<Button
 									onClick={create_event}
@@ -168,7 +168,7 @@ function Navbar() {
 					<SearchIcon />
 					<TextField className="text" placeholder="Search here" />
 				</div> */}
-							<div className="search-bar">
+							{/* <div className="search-bar">
 								<TextField
 									fullWidth
 									id="filled-basic"
@@ -183,7 +183,7 @@ function Navbar() {
 										),
 									}}
 								/>
-							</div>
+							</div> */}
 							<div className="container">
 								<Button
 									onClick={create_event}
