@@ -112,6 +112,7 @@ function Createv() {
 			history.push("/login");
 		}
 	};
+    
 
 	useEffect(() => {
 		callEventPage();
@@ -145,7 +146,7 @@ function Createv() {
 				method: "POST",
 				body: JSON.stringify({ data: base64EncodedImage }),
 				headers: { "Content-Type": "application/json" },
-				limit: '50mb',
+				limit: '100mb',
 			});
 		} catch (error) {
 			console.log(error);

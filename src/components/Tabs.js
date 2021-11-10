@@ -30,14 +30,14 @@ export default function SectionHeading() {
   const classes = useStyles();
   const [event,setEvent] = useState([]);
   useEffect(()=> {
-    fetch("/event")
+    fetch("/oevent")
     .then(res=>res.json())
     .then(data=>setEvent(data))
   },[]);
   
   const [eventweek,setEventweek] = useState([]);
   useEffect(()=> {
-    fetch("/eventweek")
+    fetch("/pevent")
     .then(res=>res.json())
     .then(data=>setEventweek(data))
   },[]);

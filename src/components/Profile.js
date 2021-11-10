@@ -5,11 +5,15 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
+import axios from "axios";
 import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+
 import { useHistory } from "react-router";
+import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
 export default function Profile() {
 	const history = useHistory();
+	const [data, setData] = useState("");
 	const [userInfo, setUserInfo] = useState({});
 	const callProfilePage = async () => {
 		try {
@@ -33,9 +37,35 @@ export default function Profile() {
 			history.push("/login");
 		}
 	};
+	var usern = userInfo.username;
+	console.log(usern);
+	const  Userevent = async () => {
+		console.log(usern);
+		try
+		{
+			console.log('sending')
+			await fetch("/userevent",{
+				method:"POST",
+				headers:{"Content-Type": "application/json"},
+				body : JSON.stringify(usern)
+			}).then(res=>res.json()).then(data=>console.log(data))
+			console.log('sent');
+		}catch(error)
+		{
+			console.log(error);
+		}
+		
+	
+	}
+	Userevent();
+
 	useEffect(() => {
 		callProfilePage();
 	}, []);
+	useEffect(() => {
+		Userevent();
+	}, []);
+	
 	return (
 		<div>
 			<Box className="form">
