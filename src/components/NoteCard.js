@@ -78,6 +78,9 @@ const useStyles = makeStyles((theme) => ({
 			backgroundColor: "#1b75bd",
 		},
 	},
+	eventtagdisplay:{
+		border: "2px solid red",
+	},
 	margins: {
 		marginLeft: 2,
 		marginBottom: 5,
@@ -173,6 +176,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
 });
 export default function NoteCard({ note }) {
+	const [current_tag,setCurrent_tag] = useState([]);
+	
 	let _id = note._id;
 	let event_type = note.ispaid;
 	let register_count = note.no_of_users;
@@ -388,8 +393,8 @@ export default function NoteCard({ note }) {
 											<div>
 												<Typography variant="h5">Tags</Typography>
 												<br />
-												<div>
-													<Chip label={note.tags} />
+												<div className={classes.eventtagdisplay}>
+											<Chip icon={<PeopleAltIcon />} label={note.tags}/>
 												</div>
 											</div>
 											<div className={classes.eventagain}>
