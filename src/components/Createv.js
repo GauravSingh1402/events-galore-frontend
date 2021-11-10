@@ -21,10 +21,11 @@ import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import GooglePayButton from "@google-pay/button-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 toast.configure();
-import GooglePayButton from "@google-pay/button-react";
+
 const Input = styled("input")({
 	display: "none",
 });
@@ -418,9 +419,7 @@ const [wtag, setTags] = React.useState([]);
 				position: "top-center",
 				autoClose: 3000,
 			});
-			setTimeout(() => {
-				history.push("/");
-			}, 3000);
+			
 			console.log("ZA WARUDOO!!!!");
 	} 
 	else {
