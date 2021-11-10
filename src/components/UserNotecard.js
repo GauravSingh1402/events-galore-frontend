@@ -173,6 +173,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
 });
 export default function UserNotecard({ note }) {
+	console.log(note);
 	let _id = note._id;
 	let event_type = note.ispaid;
 	let register_count = note.no_of_users;

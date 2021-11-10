@@ -34,14 +34,7 @@ export default function UserEvent() {
     .then(res=>res.json())
     .then(data=>setEvent(data))
   },[]);
-
-  const [eventweek,setEventweek] = useState([]);
-  useEffect(()=> {
-    fetch("/eventweek")
-    .then(res=>res.json())
-    .then(data=>setEventweek(data))
-  },[]);
-
+  console.log(event);
   const handleTabs = (e, val) => {
     setValue(val);
   };
