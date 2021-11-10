@@ -24,6 +24,7 @@ import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 toast.configure();
+import GooglePayButton from "@google-pay/button-react";
 const Input = styled("input")({
 	display: "none",
 });
@@ -36,14 +37,17 @@ const useStyles = makeStyles({
 			flexDirection: "column",
 		},
 	},
-	buttonContainer: {
-		display: "flex",
-	},
 	formInput: {
 		marginLeft: "25%",
 	},
+	color:{
+		color: "red",
+		fontSize: "20px",
+	},
 	container: {
 		marginTop: "2%",
+		backgroundColor: "white",
+		marginBottom: "2%",
 	},
 	box: {
 		display: "flex",
@@ -55,6 +59,7 @@ const useStyles = makeStyles({
 	},
 	tfwidth: {
 		width: "100%",
+		backgroundColor: "white",
 	},
 	uploadImage: {
 		width: "50%",
@@ -83,13 +88,176 @@ const useStyles = makeStyles({
 		marginRight: 20,
 		width: 100,
 	},
+	buttonContainer: {
+		display: "flex",
+	},
 	align: {
 		display: "flex",
 		flexDirection: "row",
 	},
+	wrapper: {
+		width: "496px",
+		background: "#fff",
+		borderRadius: "10px",
+		padding: "18px 25px 20px",
+		boxShadow: "0 0 30px rgba(0,0,0,0.06)",
+		"&::where(.title, li, li i, .details)":{
+			display: "flex",
+		alignItems: "center",
+		},
+	  },
+	  title:{
+		'& img':{
+			maxWidth: "21px",
+		},
+		'& h2':{
+			fontSize: "21px",
+			fontWeight: "600",
+			marginLeft: "8px",
+		  }
+	  },
+	  content:{
+		'& p':{
+			fontSize: "15px",
+		},
+		'& ul':{
+			display: "flex",
+			flexWrap: "wrap",
+			padding: "7px",
+			margin: "12px 0",
+			borderRadius: "5px",
+			border: "1px solid #a6a6a6",
+			'& li':{
+				color: "#333",
+				margin: "4px 3px",
+				listStyle: "none",
+				borderRadius: "5px",
+				background: "#F2F2F2",
+				padding: "5px 8px 5px 10px",
+				border: "1px solid #e3e1e1",
+				'& i':{
+					height: "20px",
+					width: "20px",
+					color: "#808080",
+					marginLeft: "8px",
+					fontSize: "12px",
+					cursor: "pointer",
+					borderRadius: "50%",
+					background: "#dfdfdf",
+					justifyContent: "center",
+				}
+			  },
+			  '& input':{
+				flex: 1,
+				padding: "5px",
+				border: "none",
+				outline: "none",
+				fontSize: "16px",
+			  }
+		  }
+	  },
+	   content:{
+		margin: "10px 0",
+	  },
+	  details:{
+		justifyContent: "space-between",
+	  },
+	  details:{
+		'& button':{
+			border: "none",
+			outline: "none",
+			color: "#fff",
+			fontSize: "14px",
+			cursor: "pointer",
+			padding: "9px 15px",
+			borderRadius: "5px",
+			background: "#5372F0",
+			transition: "background 0.3s ease",
+			"&:hover":{
+				background: "#2c52ed",
+			  }
+		  }
+	  },
+  
+  tagsInput:{
+	  display: "flex",
+	  alignItems: "flex-start",
+	  flexWrap: "wrap",
+	  backgroundColor: "white",
+	  minHeight: "48px",
+	  width: "100%",
+	  padding: "0 8px",
+	  border: "1px solid rgb(214, 216, 218)",
+	  borderRadius: "6px",
+	  "&:focus-within":{
+		  border: "1px solid red",
+	  },
+	  "& input": {
+		  flex: 1,
+		  border: "none",
+		  height: "46px",
+		  fontSize: "14px",
+		  padding: "4px 0 0 0",
+		  backgroundColor: "white",
+		  "&:focus":{
+			  outline: "transparent",
+		  }
+	  }
+  },
+  tags:{
+	  display: "flex",
+	  flexWrap: "wrap",
+	  padding: 0,
+	  margin: "8px 0 0 0",
+  },
+  tag:{
+	  width: "auto",
+	  height: "32px",
+	  display: "flex",
+	  alignItems: "center",
+	  justifyContent: "center",
+	  color: "#fff",
+	  padding: "0 8px",
+	  fontSize: "14px",
+	  listStyle: "none",
+	  borderRadius: "6px",
+	  margin: "0 8px 8px 0",
+	  background: "#0052cc",
+  },
+  tagTitle :{
+	marginTop: "3px",
+},
+tagCloseIcon: {
+	display: "block",
+	width: "16px",
+	height: "16px",
+	lineHeight: "16px",
+	textAlign: "center",
+	fontSize: "14px",
+	marginLeft: "8px",
+	color: "#0052cc",
+	borderRadius: "50%",
+	background: "#fff",
+	cursor: "pointer",
+},
+createvent:{
+	color: "#2196f3",
+},
 });
 function Createv() {
 	const history = useHistory();
+	let rupee = 100;
+const [wtag, setTags] = React.useState([]);
+	const addTags = eve=>{
+		if(eve.target.value!=""){
+			setTags([...wtag, eve.target.value]);
+			eve.target.value="";
+		}
+		setEvent({...event, tags: wtag});
+	};
+	const removeTags=tagToBeRemoved=>{
+		setTags(wtag.filter((_,index)=>index!=tagToBeRemoved));
+	};
 	const callEventPage = async () => {
 		try {
 			const res = await fetch("/createv", {
@@ -103,11 +271,11 @@ function Createv() {
 			const data = await res.json();
 			console.log(data);
 			const usernameval = data.username;
-			setEvent({ ...event, username: usernameval });
+			setEvent({ ...event, username: usernameval});
 			if (!res.status === 200) {
 				throw "invalid attempt";
 			}
-		} catch (err) {
+		} catch (err) {			
 			console.log(err);
 			history.push("/login");
 		}
@@ -179,7 +347,7 @@ function Createv() {
 		ispaid: "free",
 		cost: "",
 		isfeatured: "no",
-		tags: "",
+		tags: ["tags","event"],
 		no_of_users: 0,
 		username: "username",
 	});
@@ -191,6 +359,7 @@ function Createv() {
 	};
 	const classes = useStyles();
 	const [showVenue, setshowVenue] = useState(false);
+	const [showPayButton, setshowPayButton]=useState(false);
 	const [showFee, setshowFee] = useState(false);
 	const PostData = async (e) => {
 		console.log("submitted");
@@ -261,10 +430,10 @@ function Createv() {
 		
 	return (
 		<Container className={classes.container}>
-			<form className="form">
-				<Typography variant="h3" component="h2" align="center" marginBottom={2}>
+				<Typography className={classes.createvent} variant="h3" component="h2" align="center" marginTop={10}>
 					Create Event
 				</Typography>
+				<form className="form">
 				<Box className={classes.main}>
 					<Box className={classes.box}>
 						<TextField
@@ -273,9 +442,10 @@ function Createv() {
 							value={event.title}
 							label="Event Title"
 							variant="outlined"
-							color="secondary"
 							margin="normal"
+							color="secondary"
 							onChange={handleInputs}
+							sx={{backgroundColor:'white'}}
 							required
 						/>
 						<TextField
@@ -334,7 +504,7 @@ function Createv() {
 					</Box>
 				</Box>
 				<FormControl component="fieldset">
-					<FormLabel component="legend">Mode Of Event Conduction</FormLabel>
+					<FormLabel component="legend" className={classes.color}>Mode Of Event Conduction</FormLabel>
 					<RadioGroup
 						className={classes.align}
 						value={event.isoffline}
@@ -362,9 +532,9 @@ function Createv() {
 						value={event.venue}
 						label="Venue"
 						variant="outlined"
-						color="secondary"
 						multiline
 						margin="normal"
+						color="secondary"
 						rows="6"
 						onChange={handleInputs}
 						required
@@ -376,14 +546,15 @@ function Createv() {
 						value={event.link}
 						label="Zoom App or Google Meet Link"
 						variant="outlined"
-						color="secondary"
 						margin="normal"
+					    color="secondary"
 						onChange={handleInputs}
 						required
 					/>
 				)}
+				<Typography className={classes.color}>Event Date and Time:</Typography>
 				<br />
-				<br />
+				<div className={classes.buttonContainer}>
 				<TextField
 					label="Event Date"
 					value={event.date}
@@ -391,25 +562,25 @@ function Createv() {
 					color="secondary"
 					name="date"
 					type="date"
+					className={classes.tfwidth}
 					onChange={handleInputs}
 					required
 					focused
 				/>
-				<br />
-				<br />
+				&nbsp;&nbsp;
 				<TextField
 					label="Event Time"
 					value={event.time}
 					variant="outlined"
 					color="secondary"
+					className={classes.tfwidth}
 					name="time"
 					type="time"
 					onChange={handleInputs}
 					required
 					focused
 				/>
-				<br />
-				<br />
+				</div>
 				<TextField
 					className={classes.tfwidth}
 					name="eventspeaker"
@@ -434,7 +605,7 @@ function Createv() {
 					required
 				/>
 				<FormControl component="fieldset">
-					<FormLabel component="legend">Event Type</FormLabel>
+					<FormLabel component="legend"  className={classes.color}>Event Type</FormLabel>
 					<RadioGroup
 						className={classes.align}
 						value={event.ispaid}
@@ -479,43 +650,109 @@ function Createv() {
 						required
 					/>
 				) : null}
-				<br />
 				<FormControl component="fieldset">
-					<FormLabel component="legend">Featured Event</FormLabel>
+					<FormLabel component="legend" className={classes.color}>Featured Event</FormLabel>
 					<RadioGroup
 						className={classes.align}
 						value={event.isfeatured}
 						name="isfeatured"
 						onChange={handleInputs}
 					>
-						<FormControlLabel value="yes" control={<Radio />} label="Yes" />
-						<FormControlLabel value="no" control={<Radio />} label="No" />
+						<FormControlLabel value="yes" control={<Radio />} label="Yes" onClick={() => setshowPayButton(true)}/>
+						<FormControlLabel value="no" control={<Radio />} label="No" onClick={() => setshowPayButton(false)}/>
 					</RadioGroup>
 				</FormControl>
-				<TextField
-					name="tags"
-					value={event.tags}
-					className={classes.tfwidth}
-					label="Tags"
-					variant="outlined"
-					color="secondary"
-					multiline
-					margin="normal"
-					rows="6"
-					onChange={handleInputs}
-					required
+				<Typography className={classes.color}>Tags</Typography>
+				<div className={classes.tagsInput}>
+					<ul className={classes.tags}>
+						{
+							wtag.map((tag,index)=>(
+								<li key={index} className={classes.tag}>
+									<span className={classes.tagTitle}>{tag}</span>
+									<span className={classes.tagCloseIcon} onClick={() => removeTags(index)}>x</span>
+								</li>
+							))
+						}
+					</ul>
+		<input type="text" onKeyUp={e=>(e.keyCode == 32 ? addTags(e): null)} placeholder="Press space to add tags"/>
+		</div>
+		<br/>
+		<div className={classes.buttonContainer}>
+		{showPayButton ? (
+					<GooglePayButton
+					environment="TEST"
+					paymentRequest={{
+						apiVersion: 2,
+						apiVersionMinor: 0,
+						allowedPaymentMethods: [
+							{
+								type: "CARD",
+								parameters: {
+									allowedAuthMethods: [
+										"PAN_ONLY",
+										"CRYPTOGRAM_3DS",
+									],
+									allowedCardNetworks: ["MASTERCARD", "VISA"],
+								},
+								tokenizationSpecification: {
+									type: "PAYMENT_GATEWAY",
+									parameters: {
+										gateway: "example",
+										gatewayMerchantId:
+											"exampleGatewayMerchantId",
+									},
+								},
+							},
+						],
+						merchantInfo: {
+							merchantId: "12345678901234567890",
+							merchantName: "Demo Merchant",
+						},
+						transactionInfo: {
+							totalPriceStatus: "FINAL",
+							totalPriceLabel: "Total",
+							totalPrice: rupee,
+							currencyCode: "INR",
+							countryCode: "IN",
+						},
+						shippingAddressRequired: true,
+						callbackIntents: [
+							"SHIPPING_ADDRESS",
+							"PAYMENT_AUTHORIZATION",
+						],
+					}}
+					onLoadPaymentData={(paymentRequest) => {
+						console.log("Success", paymentRequest);
+					}}
+					onPaymentAuthorized={(paymentData) => {
+						console.log(
+							"Payment Authorised Success",
+							paymentData
+						);
+						return { transactionState: "SUCCESS" };
+					}}
+					onPaymentDataChanged={(paymentData) => {
+						console.log(
+							"On Payment Data Changed",
+							paymentData
+						);
+						return {};
+					}}
+					existingPaymentMethodRequired="false"
+					buttonColor="red"
+					buttonType="Buy"
 				/>
-				<div className="buttonContainer">
-					<Button
-						className={classes.submitbtn}
-						type="submit"
-						variant="contained"
-						color="primary"
-						endIcon={<KeyboardArrowRightIcon />}
-						onClick={PostData}
-					>
-						Submit
-					</Button>
+				) : <Button
+				className={classes.submitbtn}
+				type="submit"
+				variant="contained"
+				color="primary"
+				endIcon={<KeyboardArrowRightIcon />}
+				onClick={PostData}
+			>
+				Submit
+			</Button>}
+			&nbsp;&nbsp;
 					<Button
 						className={classes.submitbtn}
 						variant="contained"
@@ -528,11 +765,13 @@ function Createv() {
 						CANCEL
 					</Button>
 				</div>
-				<h1>{data.id}</h1>
+				<br/>
 			</form>
 			<ToastContainer></ToastContainer>
 		</Container>
 	);
+	
 }
 
 export default Createv;
+
