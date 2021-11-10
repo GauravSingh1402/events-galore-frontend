@@ -40,7 +40,7 @@ const useStyles = makeStyles({
 	formInput: {
 		marginLeft: "25%",
 	},
-	color:{
+	color: {
 		color: "red",
 		fontSize: "20px",
 	},
@@ -101,33 +101,33 @@ const useStyles = makeStyles({
 		borderRadius: "10px",
 		padding: "18px 25px 20px",
 		boxShadow: "0 0 30px rgba(0,0,0,0.06)",
-		"&::where(.title, li, li i, .details)":{
+		"&::where(.title, li, li i, .details)": {
 			display: "flex",
-		alignItems: "center",
+			alignItems: "center",
 		},
-	  },
-	  title:{
-		'& img':{
+	},
+	title: {
+		"& img": {
 			maxWidth: "21px",
 		},
-		'& h2':{
+		"& h2": {
 			fontSize: "21px",
 			fontWeight: "600",
 			marginLeft: "8px",
-		  }
-	  },
-	  content:{
-		'& p':{
+		},
+	},
+	content: {
+		"& p": {
 			fontSize: "15px",
 		},
-		'& ul':{
+		"& ul": {
 			display: "flex",
 			flexWrap: "wrap",
 			padding: "7px",
 			margin: "12px 0",
 			borderRadius: "5px",
 			border: "1px solid #a6a6a6",
-			'& li':{
+			"& li": {
 				color: "#333",
 				margin: "4px 3px",
 				listStyle: "none",
@@ -135,7 +135,7 @@ const useStyles = makeStyles({
 				background: "#F2F2F2",
 				padding: "5px 8px 5px 10px",
 				border: "1px solid #e3e1e1",
-				'& i':{
+				"& i": {
 					height: "20px",
 					width: "20px",
 					color: "#808080",
@@ -145,25 +145,25 @@ const useStyles = makeStyles({
 					borderRadius: "50%",
 					background: "#dfdfdf",
 					justifyContent: "center",
-				}
-			  },
-			  '& input':{
+				},
+			},
+			"& input": {
 				flex: 1,
 				padding: "5px",
 				border: "none",
 				outline: "none",
 				fontSize: "16px",
-			  }
-		  }
-	  },
-	   content:{
+			},
+		},
+	},
+	content: {
 		margin: "10px 0",
-	  },
-	  details:{
+	},
+	details: {
 		justifyContent: "space-between",
-	  },
-	  details:{
-		'& button':{
+	},
+	details: {
+		"& button": {
 			border: "none",
 			outline: "none",
 			color: "#fff",
@@ -173,90 +173,90 @@ const useStyles = makeStyles({
 			borderRadius: "5px",
 			background: "#5372F0",
 			transition: "background 0.3s ease",
-			"&:hover":{
+			"&:hover": {
 				background: "#2c52ed",
-			  }
-		  }
-	  },
-  
-  tagsInput:{
-	  display: "flex",
-	  alignItems: "flex-start",
-	  flexWrap: "wrap",
-	  backgroundColor: "white",
-	  minHeight: "48px",
-	  width: "100%",
-	  padding: "0 8px",
-	  border: "1px solid rgb(214, 216, 218)",
-	  borderRadius: "6px",
-	  "&:focus-within":{
-		  border: "1px solid red",
-	  },
-	  "& input": {
-		  flex: 1,
-		  border: "none",
-		  height: "46px",
-		  fontSize: "14px",
-		  padding: "4px 0 0 0",
-		  backgroundColor: "white",
-		  "&:focus":{
-			  outline: "transparent",
-		  }
-	  }
-  },
-  tags:{
-	  display: "flex",
-	  flexWrap: "wrap",
-	  padding: 0,
-	  margin: "8px 0 0 0",
-  },
-  tag:{
-	  width: "auto",
-	  height: "32px",
-	  display: "flex",
-	  alignItems: "center",
-	  justifyContent: "center",
-	  color: "#fff",
-	  padding: "0 8px",
-	  fontSize: "14px",
-	  listStyle: "none",
-	  borderRadius: "6px",
-	  margin: "0 8px 8px 0",
-	  background: "#0052cc",
-  },
-  tagTitle :{
-	marginTop: "3px",
-},
-tagCloseIcon: {
-	display: "block",
-	width: "16px",
-	height: "16px",
-	lineHeight: "16px",
-	textAlign: "center",
-	fontSize: "14px",
-	marginLeft: "8px",
-	color: "#0052cc",
-	borderRadius: "50%",
-	background: "#fff",
-	cursor: "pointer",
-},
-createvent:{
-	color: "#2196f3",
-},
+			},
+		},
+	},
+
+	tagsInput: {
+		display: "flex",
+		alignItems: "flex-start",
+		flexWrap: "wrap",
+		backgroundColor: "white",
+		minHeight: "48px",
+		width: "100%",
+		padding: "0 8px",
+		border: "1px solid rgb(214, 216, 218)",
+		borderRadius: "6px",
+		"&:focus-within": {
+			border: "1px solid red",
+		},
+		"& input": {
+			flex: 1,
+			border: "none",
+			height: "46px",
+			fontSize: "14px",
+			padding: "4px 0 0 0",
+			backgroundColor: "white",
+			"&:focus": {
+				outline: "transparent",
+			},
+		},
+	},
+	tags: {
+		display: "flex",
+		flexWrap: "wrap",
+		padding: 0,
+		margin: "8px 0 0 0",
+	},
+	tag: {
+		width: "auto",
+		height: "32px",
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "center",
+		color: "#fff",
+		padding: "0 8px",
+		fontSize: "14px",
+		listStyle: "none",
+		borderRadius: "6px",
+		margin: "0 8px 8px 0",
+		background: "#0052cc",
+	},
+	tagTitle: {
+		marginTop: "3px",
+	},
+	tagCloseIcon: {
+		display: "block",
+		width: "16px",
+		height: "16px",
+		lineHeight: "16px",
+		textAlign: "center",
+		fontSize: "14px",
+		marginLeft: "8px",
+		color: "#0052cc",
+		borderRadius: "50%",
+		background: "#fff",
+		cursor: "pointer",
+	},
+	createvent: {
+		color: "#2196f3",
+	},
 });
 function Createv() {
 	const history = useHistory();
 	let rupee = 100;
-const [wtag, setTags] = React.useState([]);
-	const addTags = eve=>{
-		if(eve.target.value!=""){
+	const [wtag, setTags] = React.useState([]);
+	const addTags = (eve) => {
+		if (eve.target.value != "") {
 			setTags([...wtag, eve.target.value]);
-			eve.target.value="";
+			eve.target.value = "";
 		}
-		setEvent({...event, tags: wtag});
+		setEvent({ ...event, tags: wtag });
 	};
-	const removeTags=tagToBeRemoved=>{
-		setTags(wtag.filter((_,index)=>index!=tagToBeRemoved));
+	const removeTags = (tagToBeRemoved) => {
+		setTags(wtag.filter((_, index) => index != tagToBeRemoved));
 	};
 	const callEventPage = async () => {
 		try {
@@ -271,16 +271,15 @@ const [wtag, setTags] = React.useState([]);
 			const data = await res.json();
 			console.log(data);
 			const usernameval = data.username;
-			setEvent({ ...event, username: usernameval});
+			setEvent({ ...event, username: usernameval });
 			if (!res.status === 200) {
 				throw "invalid attempt";
 			}
-		} catch (err) {			
+		} catch (err) {
 			console.log(err);
 			history.push("/login");
 		}
 	};
-    
 
 	useEffect(() => {
 		callEventPage();
@@ -314,7 +313,7 @@ const [wtag, setTags] = React.useState([]);
 				method: "POST",
 				body: JSON.stringify({ data: base64EncodedImage }),
 				headers: { "Content-Type": "application/json" },
-				limit: '100mb',
+				limit: "100mb",
 			});
 		} catch (error) {
 			console.log(error);
@@ -347,7 +346,7 @@ const [wtag, setTags] = React.useState([]);
 		ispaid: "free",
 		cost: "",
 		isfeatured: "no",
-		tags: ["tags","event"],
+		tags: ["tags", "event"],
 		no_of_users: 0,
 		username: "username",
 	});
@@ -359,8 +358,9 @@ const [wtag, setTags] = React.useState([]);
 	};
 	const classes = useStyles();
 	const [showVenue, setshowVenue] = useState(false);
-	const [showPayButton, setshowPayButton]=useState(false);
+	const [showPayButton, setshowPayButton] = useState(false);
 	const [showFee, setshowFee] = useState(false);
+
 	const PostData = async (e) => {
 		console.log("submitted");
 		e.preventDefault();
@@ -384,54 +384,74 @@ const [wtag, setTags] = React.useState([]);
 			username,
 		} = event;
 		console.log(event);
-		const res = await fetch("/createv", {
-			method: "POST",
-			headers: {
-				"Content-type": "application/json",
-			},
-			body: JSON.stringify({
-				title,
-				description,
-				image,
-				cost,
-				venue,
-				eventspeaker,
-				contact,
-				tags,
-				ispaid,
-				isoffline,
-				link,
-				isfeatured,
-				date,
-				time,
-				no_of_users,
-				username,
-			}),
-		});
-		const data = await res.json();
-		if (res.status === 422 || !data) {
-			alert("EVENT CREATION FAILED");
-			console.log("EVENT CREATION FAILED");
-		}
-		if (data.status === 200 || data.status === 201) {
-			toast.success("Event created", {
-				position: "top-center",
-				autoClose: 3000,
+		if (
+			!title ||
+			!description ||
+			!image ||
+			!eventspeaker ||
+			!contact ||
+			!isfeatured ||
+			!date ||
+			!time ||
+			!username
+		) {
+			toast.warn("Please fill all the credentials");
+		} else {
+			const res = await fetch("/createv", {
+				method: "POST",
+				headers: {
+					"Content-type": "application/json",
+				},
+				body: JSON.stringify({
+					title,
+					description,
+					image,
+					cost,
+					venue,
+					eventspeaker,
+					contact,
+					tags,
+					ispaid,
+					isoffline,
+					link,
+					isfeatured,
+					date,
+					time,
+					no_of_users,
+					username,
+				}),
 			});
-			
-			console.log("ZA WARUDOO!!!!");
-	} 
-	else {
-		window.alert("Event creation failed");
-	}}
-			
-		
+			const data = await res.json();
+			if (res.status === 400 || !data) {
+				toast.error("Invalid Event Creation");
+				console.log("EVENT CREATION FAILED");
+			} else if (res.status === 200 || res.status === 201) {
+				toast.success("Event created", {
+					position: "top-center",
+					autoClose: 3000,
+				});
+				setTimeout(() => {
+					history.push("/");
+				}, 3000);
+				console.log("ZA WARUDOO!!!!");
+			} else {
+				toast.error("Invalid Event Creation");
+			}
+		}
+	};
+
 	return (
 		<Container className={classes.container}>
-				<Typography className={classes.createvent} variant="h3" component="h2" align="center" marginTop={10}>
-					Create Event
-				</Typography>
-				<form className="form">
+			<Typography
+				className={classes.createvent}
+				variant="h3"
+				component="h2"
+				align="center"
+				marginTop={10}
+			>
+				Create Event
+			</Typography>
+			<form className="form">
 				<Box className={classes.main}>
 					<Box className={classes.box}>
 						<TextField
@@ -443,7 +463,7 @@ const [wtag, setTags] = React.useState([]);
 							margin="normal"
 							color="secondary"
 							onChange={handleInputs}
-							sx={{backgroundColor:'white'}}
+							sx={{ backgroundColor: "white" }}
 							required
 						/>
 						<TextField
@@ -502,7 +522,9 @@ const [wtag, setTags] = React.useState([]);
 					</Box>
 				</Box>
 				<FormControl component="fieldset">
-					<FormLabel component="legend" className={classes.color}>Mode Of Event Conduction</FormLabel>
+					<FormLabel component="legend" className={classes.color}>
+						Mode Of Event Conduction
+					</FormLabel>
 					<RadioGroup
 						className={classes.align}
 						value={event.isoffline}
@@ -545,7 +567,7 @@ const [wtag, setTags] = React.useState([]);
 						label="Zoom App or Google Meet Link"
 						variant="outlined"
 						margin="normal"
-					    color="secondary"
+						color="secondary"
 						onChange={handleInputs}
 						required
 					/>
@@ -553,31 +575,31 @@ const [wtag, setTags] = React.useState([]);
 				<Typography className={classes.color}>Event Date and Time:</Typography>
 				<br />
 				<div className={classes.buttonContainer}>
-				<TextField
-					label="Event Date"
-					value={event.date}
-					variant="outlined"
-					color="secondary"
-					name="date"
-					type="date"
-					className={classes.tfwidth}
-					onChange={handleInputs}
-					required
-					focused
-				/>
-				&nbsp;&nbsp;
-				<TextField
-					label="Event Time"
-					value={event.time}
-					variant="outlined"
-					color="secondary"
-					className={classes.tfwidth}
-					name="time"
-					type="time"
-					onChange={handleInputs}
-					required
-					focused
-				/>
+					<TextField
+						label="Event Date"
+						value={event.date}
+						variant="outlined"
+						color="secondary"
+						name="date"
+						type="date"
+						className={classes.tfwidth}
+						onChange={handleInputs}
+						required
+						focused
+					/>
+					&nbsp;&nbsp;
+					<TextField
+						label="Event Time"
+						value={event.time}
+						variant="outlined"
+						color="secondary"
+						className={classes.tfwidth}
+						name="time"
+						type="time"
+						onChange={handleInputs}
+						required
+						focused
+					/>
 				</div>
 				<TextField
 					className={classes.tfwidth}
@@ -603,7 +625,9 @@ const [wtag, setTags] = React.useState([]);
 					required
 				/>
 				<FormControl component="fieldset">
-					<FormLabel component="legend"  className={classes.color}>Event Type</FormLabel>
+					<FormLabel component="legend" className={classes.color}>
+						Event Type
+					</FormLabel>
 					<RadioGroup
 						className={classes.align}
 						value={event.ispaid}
@@ -649,108 +673,116 @@ const [wtag, setTags] = React.useState([]);
 					/>
 				) : null}
 				<FormControl component="fieldset">
-					<FormLabel component="legend" className={classes.color}>Featured Event</FormLabel>
+					<FormLabel component="legend" className={classes.color}>
+						Featured Event
+					</FormLabel>
 					<RadioGroup
 						className={classes.align}
 						value={event.isfeatured}
 						name="isfeatured"
 						onChange={handleInputs}
 					>
-						<FormControlLabel value="yes" control={<Radio />} label="Yes" onClick={() => setshowPayButton(true)}/>
-						<FormControlLabel value="no" control={<Radio />} label="No" onClick={() => setshowPayButton(false)}/>
+						<FormControlLabel
+							value="yes"
+							control={<Radio />}
+							label="Yes"
+							onClick={() => setshowPayButton(true)}
+						/>
+						<FormControlLabel
+							value="no"
+							control={<Radio />}
+							label="No"
+							onClick={() => setshowPayButton(false)}
+						/>
 					</RadioGroup>
 				</FormControl>
 				<Typography className={classes.color}>Tags</Typography>
 				<div className={classes.tagsInput}>
 					<ul className={classes.tags}>
-						{
-							wtag.map((tag,index)=>(
-								<li key={index} className={classes.tag}>
-									<span className={classes.tagTitle}>{tag}</span>
-									<span className={classes.tagCloseIcon} onClick={() => removeTags(index)}>x</span>
-								</li>
-							))
-						}
+						{wtag.map((tag, index) => (
+							<li key={index} className={classes.tag}>
+								<span className={classes.tagTitle}>{tag}</span>
+								<span
+									className={classes.tagCloseIcon}
+									onClick={() => removeTags(index)}
+								>
+									x
+								</span>
+							</li>
+						))}
 					</ul>
-		<input type="text" onKeyUp={e=>(e.keyCode == 32 ? addTags(e): null)} placeholder="Press space to add tags"/>
-		</div>
-		<br/>
-		<div className={classes.buttonContainer}>
-		{showPayButton ? (
-					<GooglePayButton
-					environment="TEST"
-					paymentRequest={{
-						apiVersion: 2,
-						apiVersionMinor: 0,
-						allowedPaymentMethods: [
-							{
-								type: "CARD",
-								parameters: {
-									allowedAuthMethods: [
-										"PAN_ONLY",
-										"CRYPTOGRAM_3DS",
-									],
-									allowedCardNetworks: ["MASTERCARD", "VISA"],
-								},
-								tokenizationSpecification: {
-									type: "PAYMENT_GATEWAY",
-									parameters: {
-										gateway: "example",
-										gatewayMerchantId:
-											"exampleGatewayMerchantId",
+					<input
+						type="text"
+						onKeyUp={(e) => (e.keyCode == 32 ? addTags(e) : null)}
+						placeholder="Press space to add tags"
+					/>
+				</div>
+				<br />
+				<div className={classes.buttonContainer}>
+					{showPayButton ? (
+						<GooglePayButton
+							environment="TEST"
+							paymentRequest={{
+								apiVersion: 2,
+								apiVersionMinor: 0,
+								allowedPaymentMethods: [
+									{
+										type: "CARD",
+										parameters: {
+											allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"],
+											allowedCardNetworks: ["MASTERCARD", "VISA"],
+										},
+										tokenizationSpecification: {
+											type: "PAYMENT_GATEWAY",
+											parameters: {
+												gateway: "example",
+												gatewayMerchantId: "exampleGatewayMerchantId",
+											},
+										},
 									},
+								],
+								merchantInfo: {
+									merchantId: "12345678901234567890",
+									merchantName: "Demo Merchant",
 								},
-							},
-						],
-						merchantInfo: {
-							merchantId: "12345678901234567890",
-							merchantName: "Demo Merchant",
-						},
-						transactionInfo: {
-							totalPriceStatus: "FINAL",
-							totalPriceLabel: "Total",
-							totalPrice: rupee,
-							currencyCode: "INR",
-							countryCode: "IN",
-						},
-						shippingAddressRequired: true,
-						callbackIntents: [
-							"SHIPPING_ADDRESS",
-							"PAYMENT_AUTHORIZATION",
-						],
-					}}
-					onLoadPaymentData={(paymentRequest) => {
-						console.log("Success", paymentRequest);
-					}}
-					onPaymentAuthorized={(paymentData) => {
-						console.log(
-							"Payment Authorised Success",
-							paymentData
-						);
-						return { transactionState: "SUCCESS" };
-					}}
-					onPaymentDataChanged={(paymentData) => {
-						console.log(
-							"On Payment Data Changed",
-							paymentData
-						);
-						return {};
-					}}
-					existingPaymentMethodRequired="false"
-					buttonColor="red"
-					buttonType="Buy"
-				/>
-				) : <Button
-				className={classes.submitbtn}
-				type="submit"
-				variant="contained"
-				color="primary"
-				endIcon={<KeyboardArrowRightIcon />}
-				onClick={PostData}
-			>
-				Submit
-			</Button>}
-			&nbsp;&nbsp;
+								transactionInfo: {
+									totalPriceStatus: "FINAL",
+									totalPriceLabel: "Total",
+									totalPrice: rupee,
+									currencyCode: "INR",
+									countryCode: "IN",
+								},
+								shippingAddressRequired: true,
+								callbackIntents: ["SHIPPING_ADDRESS", "PAYMENT_AUTHORIZATION"],
+							}}
+							onLoadPaymentData={(paymentRequest) => {
+								console.log("Success", paymentRequest);
+							}}
+							onPaymentAuthorized={(paymentData) => {
+								console.log("Payment Authorised Success", paymentData);
+								return { transactionState: "SUCCESS" };
+							}}
+							onPaymentDataChanged={(paymentData) => {
+								console.log("On Payment Data Changed", paymentData);
+								return {};
+							}}
+							existingPaymentMethodRequired="false"
+							buttonColor="red"
+							buttonType="Buy"
+						/>
+					) : (
+						<Button
+							className={classes.submitbtn}
+							type="submit"
+							variant="contained"
+							color="primary"
+							endIcon={<KeyboardArrowRightIcon />}
+							onClick={PostData}
+						>
+							Submit
+						</Button>
+					)}
+					&nbsp;&nbsp;
 					<Button
 						className={classes.submitbtn}
 						variant="contained"
@@ -763,13 +795,11 @@ const [wtag, setTags] = React.useState([]);
 						CANCEL
 					</Button>
 				</div>
-				<br/>
+				<br />
 			</form>
 			<ToastContainer></ToastContainer>
 		</Container>
 	);
-	
 }
 
 export default Createv;
-
