@@ -12,7 +12,7 @@ import Chip from "@mui/material/Chip";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import RoomIcon from "@mui/icons-material/Room";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import Axios from "axios";
+import axios from "axios";
 import Dialog from "@mui/material/Dialog";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -30,6 +30,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import GooglePayButton from "@google-pay/button-react";
+import Razorpay from 'razorpay';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 toast.configure();
@@ -194,12 +195,12 @@ export default function NoteCard({ note }) {
 		console.log(confirmation);
 		if (confirmation == true) {
 			if (event_type == "paid") {
-				Axios.put("/update", { register_count: register_count, _id: _id });
+				axios.put("/update", { register_count: register_count, _id: _id });
 				console.log(register_count);
 				setOpened(true);
 			} else {
 				register_count = register_count + 1;
-				Axios.put("/update", { register_count: register_count, _id: _id });
+				axios.put("/update", { register_count: register_count, _id: _id });
 				console.log(register_count);
 				toast.success("Registered Successfully", {
 					position: "top-center",
@@ -312,6 +313,47 @@ export default function NoteCard({ note }) {
 		.concat(sliceMonth)
 		.concat(" ")
 		.concat(sliceYear);
+		const initPayment = (data) =>
+		{
+			const options = {
+				key: "rzp_test_ozydJ2C7b7oxqD",
+				amount:data.amount,
+				currency:data.currency,
+				name:"Featured Event",
+				description: "BANNER EVENT PRICE",
+				image: "",
+				order_id: data.id,
+				handler: async(response)=>
+				{
+					try{
+						const {data} = await axios.post("/verify",response);
+						console.log(data);
+					}
+					catch(error)
+					{
+						console.log(error);
+					}
+				},
+				theme: {
+					color: "#3399cc",
+				}
+			}
+			const rzp1 = new window.Razorpay(options);
+			rzp1.open();
+		}
+		const handlePayment = async() =>
+		{
+			try
+			{
+				const { data } = await axios.post('/payment',{amount:rupee});
+				console.log(data);
+				initPayment(data.data);
+			}
+			catch(error)
+			{
+				console.log(error);
+			}
+		};
 	return (
 		<Card>
 			<CardActionArea sx={{ backgroundColor: "white" }}>
@@ -457,69 +499,9 @@ export default function NoteCard({ note }) {
 											</DialogTitle>
 											<DialogContent>
 												<DialogContentText>
-													<GooglePayButton
-														environment="TEST"
-														paymentRequest={{
-															apiVersion: 2,
-															apiVersionMinor: 0,
-															allowedPaymentMethods: [
-																{
-																	type: "CARD",
-																	parameters: {
-																		allowedAuthMethods: [
-																			"PAN_ONLY",
-																			"CRYPTOGRAM_3DS",
-																		],
-																		allowedCardNetworks: ["MASTERCARD", "VISA"],
-																	},
-																	tokenizationSpecification: {
-																		type: "PAYMENT_GATEWAY",
-																		parameters: {
-																			gateway: "example",
-																			gatewayMerchantId:
-																				"exampleGatewayMerchantId",
-																		},
-																	},
-																},
-															],
-															merchantInfo: {
-																merchantId: "12345678901234567890",
-																merchantName: "Demo Merchant",
-															},
-															transactionInfo: {
-																totalPriceStatus: "FINAL",
-																totalPriceLabel: "Total",
-																totalPrice: rupee,
-																currencyCode: "INR",
-																countryCode: "IN",
-															},
-															shippingAddressRequired: true,
-															callbackIntents: [
-																"SHIPPING_ADDRESS",
-																"PAYMENT_AUTHORIZATION",
-															],
-														}}
-														onLoadPaymentData={(paymentRequest) => {
-															console.log("Success", paymentRequest);
-														}}
-														onPaymentAuthorized={(paymentData) => {
-															console.log(
-																"Payment Authorised Success",
-																paymentData
-															);
-															return { transactionState: "SUCCESS" };
-														}}
-														onPaymentDataChanged={(paymentData) => {
-															console.log(
-																"On Payment Data Changed",
-																paymentData
-															);
-															return {};
-														}}
-														existingPaymentMethodRequired="false"
-														buttonColor="black"
-														buttonType="Buy"
-													/>
+												<Button variant="contained" onClick={handlePayment}>
+													BUY NOW
+												</Button>
 												</DialogContentText>
 											</DialogContent>
 											<DialogActions>

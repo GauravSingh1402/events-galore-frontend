@@ -24,6 +24,7 @@ import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GooglePayButton from "@google-pay/button-react";
+import Razorpay from 'razorpay';
 toast.configure();
 const Input = styled("input")({
 	display: "none",
@@ -440,6 +441,48 @@ function Createv() {
 		}
 	};
 
+	const initPayment = (data) =>
+	{
+		const options = {
+			key: "rzp_test_ozydJ2C7b7oxqD",
+			amount:data.amount,
+			currency:data.currency,
+			name:"Featured Event",
+			description: "BANNER EVENT PRICE",
+			image: "",
+			order_id: data.id,
+			handler: async(response)=>
+			{
+				try{
+					const {data} = await axios.post("/verify",response);
+					console.log(data);
+				}
+				catch(error)
+				{
+					console.log(error);
+				}
+			},
+			theme: {
+				color: "#3399cc",
+			}
+		}
+		const rzp1 = new window.Razorpay(options);
+		rzp1.open();
+	}
+	const handlePayment = async() =>
+	{
+		try
+		{
+			const { data } = await axios.post('/payment',{amount:rupee});
+			console.log(data);
+			initPayment(data.data);
+		}
+		catch(error)
+		{
+			console.log(error);
+		}
+	};
+
 	return (
 		<Container className={classes.container}>
 			<Typography
@@ -720,56 +763,9 @@ function Createv() {
 				<br />
 				<div className={classes.buttonContainer}>
 					{showPayButton ? (
-						<GooglePayButton
-							environment="TEST"
-							paymentRequest={{
-								apiVersion: 2,
-								apiVersionMinor: 0,
-								allowedPaymentMethods: [
-									{
-										type: "CARD",
-										parameters: {
-											allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"],
-											allowedCardNetworks: ["MASTERCARD", "VISA"],
-										},
-										tokenizationSpecification: {
-											type: "PAYMENT_GATEWAY",
-											parameters: {
-												gateway: "example",
-												gatewayMerchantId: "exampleGatewayMerchantId",
-											},
-										},
-									},
-								],
-								merchantInfo: {
-									merchantId: "12345678901234567890",
-									merchantName: "Demo Merchant",
-								},
-								transactionInfo: {
-									totalPriceStatus: "FINAL",
-									totalPriceLabel: "Total",
-									totalPrice: rupee,
-									currencyCode: "INR",
-									countryCode: "IN",
-								},
-								shippingAddressRequired: true,
-								callbackIntents: ["SHIPPING_ADDRESS", "PAYMENT_AUTHORIZATION"],
-							}}
-							onLoadPaymentData={(paymentRequest) => {
-								console.log("Success", paymentRequest);
-							}}
-							onPaymentAuthorized={(paymentData) => {
-								console.log("Payment Authorised Success", paymentData);
-								return { transactionState: "SUCCESS" };
-							}}
-							onPaymentDataChanged={(paymentData) => {
-								console.log("On Payment Data Changed", paymentData);
-								return {};
-							}}
-							existingPaymentMethodRequired="false"
-							buttonColor="red"
-							buttonType="Buy"
-						/>
+						<Button onClick={handlePayment}>
+							BUY NOW
+						</Button>
 					) : (
 						<Button
 							className={classes.submitbtn}
