@@ -20,6 +20,7 @@ function App() {
 				<Switch>
 					<Route exact path="/createv">
 						<Createv />
+						
 					</Route>
 					<Route exact path="/profile">
 						<Navbar />
