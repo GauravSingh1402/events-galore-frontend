@@ -36,6 +36,7 @@ export default function SectionHeading() {
     .then(data=>setEvent(data))
   },[]);
   
+  
   const [eventweek,setEventweek] = useState([]);
   useEffect(()=> {
     fetch(`${linkk}event`)
