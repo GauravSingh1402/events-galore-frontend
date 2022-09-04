@@ -248,6 +248,7 @@ const useStyles = makeStyles({
 function Createv() {
 	const history = useHistory();
 	let rupee = 100;
+	const linkk="https://event191407.herokuapp.com/"
 	const [wtag, setTags] = React.useState([]);
 	const addTags = (eve) => {
 		if (eve.target.value != "") {
@@ -261,7 +262,7 @@ function Createv() {
 	};
 	const callEventPage = async () => {
 		try {
-			const res = await fetch("/createv", {
+			const res = await fetch(`${linkk}createv`, {
 				method: "GET",
 				headers: {
 					Accept: "application/json",
@@ -310,7 +311,7 @@ function Createv() {
 	};
 	const UploadImage = async (base64EncodedImage) => {
 		try {
-			await fetch("/image", {
+			await fetch(`${linkk}image`, {
 				method: "POST",
 				body: JSON.stringify({ data: base64EncodedImage }),
 				headers: { "Content-Type": "application/json" },
@@ -398,7 +399,7 @@ function Createv() {
 		) {
 			toast.warn("Please fill all the credentials");
 		} else {
-			const res = await fetch("/createv", {
+			const res = await fetch(`${linkk}createv`, {
 				method: "POST",
 				headers: {
 					"Content-type": "application/json",
@@ -454,7 +455,7 @@ function Createv() {
 			handler: async(response)=>
 			{
 				try{
-					const {data} = await axios.post("/verify",response);
+					const {data} = await axios.post(`${linkk}verify`,response);
 					console.log(data);
 				}
 				catch(error)
@@ -473,7 +474,7 @@ function Createv() {
 	{
 		try
 		{
-			const { data } = await axios.post('/payment',{amount:rupee});
+			const { data } = await axios.post(`${linkk}payment`,{amount:rupee});
 			console.log(data);
 			initPayment(data.data);
 		}
