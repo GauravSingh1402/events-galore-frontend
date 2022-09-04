@@ -323,7 +323,7 @@ function Createv() {
 		getImage();
 	};
 	const getImage = () => {
-		axios("/image")
+		axios(`${linkk}image`)
 			.then((response) => {
 				console.log(response.data["imageurl"]);
 				setEvent({ ...event, image: response.data["imageurl"] });
