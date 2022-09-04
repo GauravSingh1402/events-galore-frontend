@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 		fontWeight: "bold",
 		margin: 0,
 	},
-	
 	noteDescription: {
 		fontSize: "17px",
 		margin: 0,
