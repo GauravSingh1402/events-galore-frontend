@@ -21,11 +21,9 @@ import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import GooglePayButton from "@google-pay/button-react";
 import Razorpay from 'razorpay';
-toast.configure();
+import Swal from 'sweetalert2'
 const Input = styled("input")({
 	display: "none",
 });
@@ -397,7 +395,11 @@ function Createv() {
 			!time ||
 			!username
 		) {
-			toast.warn("Please fill all the credentials");
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Please enter all fields!',
+			  })
 		} else {
 			const res = await fetch(`${linkk}createv`, {
 				method: "POST",
@@ -425,19 +427,28 @@ function Createv() {
 			});
 			const data = await res.json();
 			if (res.status === 400 || !data) {
-				toast.error("Invalid Event Creation");
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Invalid Event!',
+				  })
 				console.log("EVENT CREATION FAILED");
 			} else if (res.status === 200 || res.status === 201) {
-				toast.success("Event created", {
-					position: "top-center",
-					autoClose: 3000,
-				});
+				Swal.fire({
+					icon: 'success',
+					title: 'Success...',
+					text: 'Event Created!',
+				  })
 				setTimeout(() => {
 					history.push("/");
 				}, 3000);
 				console.log("ZA WARUDOO!!!!");
 			} else {
-				toast.error("Invalid Event Creation");
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Invalid Event!',
+				  })
 			}
 		}
 	};
@@ -794,7 +805,6 @@ function Createv() {
 				</div>
 				<br />
 			</form>
-			<ToastContainer></ToastContainer>
 		</Container>
 	);
 }

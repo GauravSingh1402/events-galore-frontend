@@ -13,9 +13,8 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { IconButton } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { userContext } from "../App";
+import Swal from 'sweetalert2'
 export default function Signup() {
 	const { state, dispatch } = useContext(userContext);
 	const history = useHistory();
@@ -26,7 +25,11 @@ export default function Signup() {
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		if (!email || !password) {
-			toast.warn("Please fill all the credentials");
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Please enter all the fields!',
+			  })
 		} else {
 			const res = await fetch(`${linkk}login`, {
 				method: "POST",
@@ -41,13 +44,18 @@ export default function Signup() {
 			});
 			const data = await res.json();
 			if (res.status === 400 || !data) {
-				toast.error("Invalid Login");
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Invalid Login!',
+				  })
 			} else {
 				dispatch({ type: "USER", payload: true });
-				toast.success("Login successful", {
-					position: "top-center",
-					autoClose: 3000,
-				});
+				Swal.fire({
+					icon: 'success',
+					title: 'Success...',
+					text: 'Login Successfull!',
+				  })
 				setTimeout(() => {
 					history.push("/");
 				}, 3000);
@@ -130,7 +138,6 @@ export default function Signup() {
 					</Box>
 				</Box>
 			</Container>
-			<ToastContainer></ToastContainer>
 		</div>
 	);
 }

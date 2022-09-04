@@ -9,9 +9,8 @@ import { Button } from "@material-ui/core";
 import { Link } from "@material-ui/core";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { IconButton } from "@material-ui/core";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useHistory, NavLink } from "react-router-dom";
+import Swal from 'sweetalert2'
 export default function Signup() {
 	const history = useHistory();
 	const linkk="https://event191407.herokuapp.com/"
@@ -32,7 +31,11 @@ export default function Signup() {
 		e.preventDefault();
 		const { firstname, lastname, username, email, password } = state;
 		if (!firstname || !lastname || !username || !email || !password) {
-			toast.warn("Please fill all the credentials");
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Please enter all fields!',
+			  })
 		} else {
 			const res = await fetch(`${linkk}register`, {
 				method: "POST",
@@ -50,12 +53,17 @@ export default function Signup() {
 			});
 			const data = await res.json();
 			if (res.status === 422 || !data) {
-				toast.error("Invalid Registration");
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Invalid Email or Password!',
+				  })
 			} else {
-				toast.success("Registration successful", {
-					position: "top-center",
-					autoClose: 3000,
-				});
+				Swal.fire({
+					icon: 'success',
+					title: 'Success...',
+					text: 'Login Successfull!',
+				  })
 				setTimeout(() => {
 					history.push("/login");
 				}, 3000);
@@ -167,7 +175,6 @@ export default function Signup() {
 					</Box>
 				</Box>
 			</Container>
-			<ToastContainer></ToastContainer>
 		</div>
 	);
 }

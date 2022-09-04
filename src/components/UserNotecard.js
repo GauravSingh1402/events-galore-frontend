@@ -30,9 +30,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import GooglePayButton from "@google-pay/button-react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-toast.configure();
+import Swal from 'sweetalert2'
 const useStyles = makeStyles((theme) => ({
 	notetitle: {
 		fontSize: "25px",
@@ -531,7 +529,6 @@ export default function UserNotecard({ note }) {
 					<Chip icon={<PeopleAltIcon />} label={text3} />
 				</div>
 			</CardActions>
-			<ToastContainer></ToastContainer>
 		</Card>
 	);
 }

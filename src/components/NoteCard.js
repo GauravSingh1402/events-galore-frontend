@@ -31,9 +31,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import GooglePayButton from "@google-pay/button-react";
 import Razorpay from 'razorpay';
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-toast.configure();
+import Swal from 'sweetalert2'
 const useStyles = makeStyles((theme) => ({
 	notetitle: {
 		fontSize: "25px",
@@ -186,6 +184,7 @@ export default function NoteCard({ note }) {
 	let text2 = "registrations";
 	let text3 = users.concat(" ", text2);
 	let rupee = note.cost;
+	const linkk="https://event191407.herokuapp.com/"
 	const [open, setOpen] = useState(false);
 	const [opened, setOpened] = React.useState(false);
 	const theme = useTheme();
@@ -195,22 +194,18 @@ export default function NoteCard({ note }) {
 		console.log(confirmation);
 		if (confirmation == true) {
 			if (event_type == "paid") {
-				axios.put("/update", { register_count: register_count, _id: _id });
+				axios.put(`${linkk}update`, { register_count: register_count, _id: _id });
 				console.log(register_count);
 				setOpened(true);
 			} else {
 				register_count = register_count + 1;
-				axios.put("/update", { register_count: register_count, _id: _id });
+				axios.put(`${linkk}update`, { register_count: register_count, _id: _id });
 				console.log(register_count);
-				toast.success("Registered Successfully", {
-					position: "top-center",
-					autoClose: 3000,
-					hideProgressBar: false,
-					closeOnClick: true,
-					pauseOnHover: false,
-					draggable: false,
-					progress: undefined,
-				});
+				Swal.fire({
+					icon: 'success',
+					title: 'Success...',
+					text: 'Registered Successfully!',
+				  })
 			}
 		}
 	};
@@ -532,7 +527,6 @@ export default function NoteCard({ note }) {
 					<Chip icon={<PeopleAltIcon />} label={text3} />
 				</div>
 			</CardActions>
-			<ToastContainer></ToastContainer>
 		</Card>
 	);
 }

@@ -27,9 +27,7 @@ import { useTheme } from "@mui/material/styles";
 import GooglePayButton from "@google-pay/button-react";
 import EventIcon from '@mui/icons-material/Event';
 import { makeStyles } from "@material-ui/core/styles";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-toast.configure();
+import Swal from 'sweetalert2'
 const useStyles = makeStyles((theme) => ({
     bannerbtn:{
         height: "60%",
@@ -235,15 +233,11 @@ const classing = useStyles();
                         register_count = register_count + 1;
                         Axios.put(`${link}update`, { register_count: register_count, _id: _id });
                         console.log(register_count);
-                        toast.success("Registered Successfully", {
-                            position: "top-center",
-                            autoClose: 3000,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: false,
-                            draggable: false,
-                            progress: undefined,
-                        });
+						Swal.fire({
+							icon: 'success',
+							title: 'Success...',
+							text: 'Registered Successfully!',
+						  })
                     }
                 }
             };
@@ -537,7 +531,6 @@ const classing = useStyles();
                     </div>
                 </div>
                 <div className="overlay"></div>
-                <ToastContainer></ToastContainer>
             </div>
             )
         })}
