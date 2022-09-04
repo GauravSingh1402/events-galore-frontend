@@ -19,6 +19,7 @@
     "@testing-library/user-event": "^12.8.3",
     "assert": "^2.0.0",
     "axios": "^0.22.0",
+    "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
     "cloudinary-react": "^1.7.0",
     "crypto-browserify": "^3.12.0",

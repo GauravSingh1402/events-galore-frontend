@@ -4,15 +4,16 @@ import axios from 'axios';
 import UserNotecard from "./UserNotecard";
 export default function UserEvent() {
   const [event,setEvent] = useState([]);
+	const linkk="https://event191407.herokuapp.com/"
   useEffect(()=> {
-    fetch("/usrevent")
+    fetch(`${linkk}usrevent`)
     .then(res=>res.json())
     .then(data=>setEvent(data))
   },[]);
 
   const [eventweek,setEventweek] = useState([]);
   useEffect(()=> {
-    fetch("/eventweek")
+    fetch(`${linkk}eventweek`)
     .then(res=>res.json())
     .then(data=>setEventweek(data))
   },[]);

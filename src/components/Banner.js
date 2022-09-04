@@ -187,9 +187,10 @@ const [event,setEvent] = useState([]);
 const [current, setCurrent] = useState();
 const theme = useTheme();
 const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+const link="https://event191407.herokuapp.com/"
 const classing = useStyles();
   useEffect(()=> {
-    fetch("/bevent")
+    fetch(`${link}bevent`)
     .then(res=>res.json())
     .then(data=>setEvent(data))
   },[]);
@@ -227,12 +228,12 @@ const classing = useStyles();
                 console.log(confirmation);
                 if (confirmation == true) {
                     if (event_type == "paid") {
-                        Axios.put("/update", { register_count: register_count, _id: _id });
+                        Axios.put(`${link}update`, { register_count: register_count, _id: _id });
                         console.log(register_count);
                         setOpened(true);
                     } else {
                         register_count = register_count + 1;
-                        Axios.put("/update", { register_count: register_count, _id: _id });
+                        Axios.put(`${link}update`, { register_count: register_count, _id: _id });
                         console.log(register_count);
                         toast.success("Registered Successfully", {
                             position: "top-center",

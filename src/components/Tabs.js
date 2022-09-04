@@ -29,15 +29,16 @@ const useStyles = makeStyles((theme) => ({
 export default function SectionHeading() {
   const classes = useStyles();
   const [event,setEvent] = useState([]);
+	const linkk="https://event191407.herokuapp.com/"
   useEffect(()=> {
-    fetch("/oevent")
+    fetch(`${linkk}oevent`)
     .then(res=>res.json())
     .then(data=>setEvent(data))
   },[]);
   
   const [eventweek,setEventweek] = useState([]);
   useEffect(()=> {
-    fetch("/event")
+    fetch(`${linkk}event`)
     .then(res=>res.json())
     .then(data=>setEventweek(data))
   },[]);

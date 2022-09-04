@@ -12,7 +12,8 @@ module.exports = function override(config, env) {
         "os": require.resolve("os-browserify"), 
         "url": require.resolve("url"),
         "net":false,
-        "fs":false
+        "fs":false,
+        "zlib": require.resolve("browserify-zlib")
     };
     // config.plugins.push(
     //     new webpack.ProvidePlugin({

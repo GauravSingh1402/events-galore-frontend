@@ -16,9 +16,10 @@ export default function Profile() {
 	const history = useHistory();
 	const [data, setData] = useState("");
 	const [userInfo, setUserInfo] = useState({});
+	const linkk="https://event191407.herokuapp.com/"
 	const callProfilePage = async () => {
 		try {
-			const res = await fetch("/profile", {
+			const res = await fetch(`${linkk}profile`, {
 				method: "GET",
 				headers: {
 					Accept: "application/json",
@@ -44,7 +45,7 @@ export default function Profile() {
 		console.log(usern);
 		console.log("sending");
 		try {
-			await fetch("/userevent", {
+			await fetch(`${linkk}userevent`, {
 				method: "POST",
 				body: JSON.stringify({ usern }),
 				headers: { "Content-Type": "application/json" },

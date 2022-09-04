@@ -22,12 +22,13 @@ export default function Signup() {
 	const [showPassword, setShowPassword] = useState(false);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const linkk="https://event191407.herokuapp.com/"
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		if (!email || !password) {
 			toast.warn("Please fill all the credentials");
 		} else {
-			const res = await fetch("/login", {
+			const res = await fetch(`${linkk}login`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

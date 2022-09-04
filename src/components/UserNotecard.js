@@ -181,6 +181,7 @@ export default function UserNotecard({ note }) {
 	let text2 = "registrations";
 	let text3 = users.concat(" ", text2);
 	let rupee = note.cost;
+	const linkk="https://event191407.herokuapp.com/"
 	const [open, setOpen] = useState(false);
 	const [opened, setOpened] = React.useState(false);
 	const theme = useTheme();

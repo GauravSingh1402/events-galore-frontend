@@ -14,6 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useHistory, NavLink } from "react-router-dom";
 export default function Signup() {
 	const history = useHistory();
+	const linkk="https://event191407.herokuapp.com/"
 	const [showPassword, setShowPassword] = useState(false);
 	const [state, setState] = useState({
 		firstname: "",
@@ -33,7 +34,7 @@ export default function Signup() {
 		if (!firstname || !lastname || !username || !email || !password) {
 			toast.warn("Please fill all the credentials");
 		} else {
-			const res = await fetch("/register", {
+			const res = await fetch(`${linkk}register`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

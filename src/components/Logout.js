@@ -4,8 +4,9 @@ import { userContext } from "../App";
 const Logout = () => {
 	const history = useHistory();
 	const { state, dispatch } = useContext(userContext);
+	const linkk="https://event191407.herokuapp.com/"
 	useEffect(() => {
-		fetch("/logout", {
+		fetch(`${linkk}logout`, {
 			method: "GET",
 			headers: {
 				Accept: "application/json",
