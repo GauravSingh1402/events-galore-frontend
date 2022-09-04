@@ -321,7 +321,7 @@ export default function NoteCard({ note }) {
 				handler: async(response)=>
 				{
 					try{
-						const {data} = await axios.post("/verify",response);
+						const {data} = await axios.post(`${linkk}verify`,response);
 						console.log(data);
 					}
 					catch(error)
@@ -340,7 +340,7 @@ export default function NoteCard({ note }) {
 		{
 			try
 			{
-				const { data } = await axios.post('/payment',{amount:rupee});
+				const { data } = await axios.post(`${linkk}payment`,{amount:rupee});
 				console.log(data);
 				initPayment(data.data);
 			}
