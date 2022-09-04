@@ -11,6 +11,7 @@ module.exports = function override(config, env) {
         // "https": require.resolve("https-browserify"), 
         "os": require.resolve("os-browserify"), 
         // "url": require.resolve("url") 
+        "net":false
     };
     // config.plugins.push(
     //     new webpack.ProvidePlugin({
