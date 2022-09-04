@@ -37,6 +37,7 @@ export default function Signup() {
 					email,
 					password,
 				}),
+				credentials: "include",
 			});
 			const data = await res.json();
 			if (res.status === 400 || !data) {
