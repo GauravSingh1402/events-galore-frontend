@@ -13,7 +13,8 @@ module.exports = function override(config, env) {
         "url": require.resolve("url"),
         "net":false,
         "fs":false,
-        "zlib": require.resolve("browserify-zlib")
+        "tls":false,
+        "zlib": require.resolve("browserify-zlib"),
     };
     // config.plugins.push(
     //     new webpack.ProvidePlugin({
