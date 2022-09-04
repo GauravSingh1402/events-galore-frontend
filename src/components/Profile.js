@@ -196,6 +196,7 @@ export default function Profile() {
 						UPDATE DETAILS
 					</Button>
 				</div> */}
+				
 			</Box>
 		</div>
 	);
