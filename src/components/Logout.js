@@ -1,11 +1,11 @@
 import React, { useEffect, useContext } from "react";
 import { useHistory } from "react-router";
 import { userContext } from "../App";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 const Logout = () => {
 	const history = useHistory();
 	const { state, dispatch } = useContext(userContext);
-	const linkk="https://event191407.herokuapp.com/"
+	const linkk = "https://events-galore-backend.onrender.com/";
 	useEffect(() => {
 		fetch(`${linkk}logout`, {
 			method: "GET",
@@ -19,18 +19,18 @@ const Logout = () => {
 				dispatch({ type: "USER", payload: false });
 				window.localStorage.setItem("state", false);
 				Swal.fire({
-					icon: 'success',
-					title: 'Success...',
-					text: 'Logout Successfull!',
-				  })
+					icon: "success",
+					title: "Success...",
+					text: "Logout Successfull!",
+				});
 				history.push("/");
 				window.location.reload();
 				if (res.status != 200) {
 					Swal.fire({
-						icon: 'error',
-						title: 'Oops...',
-						text: 'Logout Failed!',
-					  })
+						icon: "error",
+						title: "Oops...",
+						text: "Logout Failed!",
+					});
 					throw res.error;
 				}
 			})

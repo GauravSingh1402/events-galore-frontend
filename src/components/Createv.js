@@ -22,8 +22,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import GooglePayButton from "@google-pay/button-react";
-import Razorpay from 'razorpay';
-import Swal from 'sweetalert2'
+import Razorpay from "razorpay";
+import Swal from "sweetalert2";
 const Input = styled("input")({
 	display: "none",
 });
@@ -246,7 +246,7 @@ const useStyles = makeStyles({
 function Createv() {
 	const history = useHistory();
 	let rupee = 100;
-	const linkk="https://event191407.herokuapp.com/"
+	const linkk = "https://events-galore-backend.onrender.com/";
 	const [wtag, setTags] = React.useState([]);
 	const addTags = (eve) => {
 		if (eve.target.value != "") {
@@ -396,10 +396,10 @@ function Createv() {
 			!username
 		) {
 			Swal.fire({
-				icon: 'error',
-				title: 'Oops...',
-				text: 'Please enter all fields!',
-			  })
+				icon: "error",
+				title: "Oops...",
+				text: "Please enter all fields!",
+			});
 		} else {
 			const res = await fetch(`${linkk}createv`, {
 				method: "POST",
@@ -428,69 +428,61 @@ function Createv() {
 			const data = await res.json();
 			if (res.status === 400 || !data) {
 				Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: 'Invalid Event!',
-				  })
+					icon: "error",
+					title: "Oops...",
+					text: "Invalid Event!",
+				});
 				console.log("EVENT CREATION FAILED");
 			} else if (res.status === 200 || res.status === 201) {
 				Swal.fire({
-					icon: 'success',
-					title: 'Success...',
-					text: 'Event Created!',
-				  })
+					icon: "success",
+					title: "Success...",
+					text: "Event Created!",
+				});
 				setTimeout(() => {
 					history.push("/");
 				}, 3000);
 				console.log("ZA WARUDOO!!!!");
 			} else {
 				Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: 'Invalid Event!',
-				  })
+					icon: "error",
+					title: "Oops...",
+					text: "Invalid Event!",
+				});
 			}
 		}
 	};
 
-	const initPayment = (data) =>
-	{
+	const initPayment = (data) => {
 		const options = {
 			key: "rzp_test_ozydJ2C7b7oxqD",
-			amount:data.amount,
-			currency:data.currency,
-			name:"Featured Event",
+			amount: data.amount,
+			currency: data.currency,
+			name: "Featured Event",
 			description: "BANNER EVENT PRICE",
 			image: "",
 			order_id: data.id,
-			handler: async(response)=>
-			{
-				try{
-					const {data} = await axios.post(`${linkk}verify`,response);
+			handler: async (response) => {
+				try {
+					const { data } = await axios.post(`${linkk}verify`, response);
 					console.log(data);
-				}
-				catch(error)
-				{
+				} catch (error) {
 					console.log(error);
 				}
 			},
 			theme: {
 				color: "#3399cc",
-			}
-		}
+			},
+		};
 		const rzp1 = new window.Razorpay(options);
 		rzp1.open();
-	}
-	const handlePayment = async() =>
-	{
-		try
-		{
-			const { data } = await axios.post(`${linkk}payment`,{amount:rupee});
+	};
+	const handlePayment = async () => {
+		try {
+			const { data } = await axios.post(`${linkk}payment`, { amount: rupee });
 			console.log(data);
 			initPayment(data.data);
-		}
-		catch(error)
-		{
+		} catch (error) {
 			console.log(error);
 		}
 	};
@@ -775,9 +767,7 @@ function Createv() {
 				<br />
 				<div className={classes.buttonContainer}>
 					{showPayButton ? (
-						<Button onClick={handlePayment}>
-							BUY NOW
-						</Button>
+						<Button onClick={handlePayment}>BUY NOW</Button>
 					) : (
 						<Button
 							className={classes.submitbtn}

@@ -10,10 +10,10 @@ import { Link } from "@material-ui/core";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { IconButton } from "@material-ui/core";
 import { useHistory, NavLink } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 export default function Signup() {
 	const history = useHistory();
-	const linkk="https://event191407.herokuapp.com/"
+	const linkk = "https://events-galore-backend.onrender.com/";
 	const [showPassword, setShowPassword] = useState(false);
 	const [state, setState] = useState({
 		firstname: "",
@@ -32,10 +32,10 @@ export default function Signup() {
 		const { firstname, lastname, username, email, password } = state;
 		if (!firstname || !lastname || !username || !email || !password) {
 			Swal.fire({
-				icon: 'error',
-				title: 'Oops...',
-				text: 'Please enter all fields!',
-			  })
+				icon: "error",
+				title: "Oops...",
+				text: "Please enter all fields!",
+			});
 		} else {
 			const res = await fetch(`${linkk}register`, {
 				method: "POST",
@@ -54,16 +54,16 @@ export default function Signup() {
 			const data = await res.json();
 			if (res.status === 422 || !data) {
 				Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: 'Invalid Email or Password!',
-				  })
+					icon: "error",
+					title: "Oops...",
+					text: "Invalid Email or Password!",
+				});
 			} else {
 				Swal.fire({
-					icon: 'success',
-					title: 'Success...',
-					text: 'Login Successfull!',
-				  })
+					icon: "success",
+					title: "Success...",
+					text: "Login Successfull!",
+				});
 				setTimeout(() => {
 					history.push("/login");
 				}, 3000);

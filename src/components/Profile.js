@@ -16,7 +16,7 @@ export default function Profile() {
 	const history = useHistory();
 	const [data, setData] = useState("");
 	const [userInfo, setUserInfo] = useState({});
-	const linkk="https://event191407.herokuapp.com/"
+	const linkk = "https://events-galore-backend.onrender.com/";
 	const callProfilePage = async () => {
 		try {
 			const res = await fetch(`${linkk}profile`, {
@@ -196,7 +196,6 @@ export default function Profile() {
 						UPDATE DETAILS
 					</Button>
 				</div> */}
-				
 			</Box>
 		</div>
 	);

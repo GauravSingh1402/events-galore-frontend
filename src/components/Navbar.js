@@ -22,7 +22,7 @@ import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 function Navbar() {
 	const history = useHistory();
-	const linkk="https://event191407.herokuapp.com/"
+	const linkk = "https://events-galore-backend.onrender.com/";
 	const { state, dispatch } = useContext(userContext);
 	const [contextState, setContextState] = useState(() => {
 		if (state !== null) {
@@ -56,7 +56,7 @@ function Navbar() {
 								onClick={() => {
 									history.push("/");
 								}}
-								class="logotitle"
+								className="logotitle"
 							>
 								Events Galore
 							</h1>
@@ -161,7 +161,7 @@ function Navbar() {
 								onClick={() => {
 									history.push("/");
 								}}
-								class="logotitle"
+								className="logotitle"
 							>
 								Events Galore
 							</h1>

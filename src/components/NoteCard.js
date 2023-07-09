@@ -30,8 +30,8 @@ import EmailIcon from "@mui/icons-material/Email";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import GooglePayButton from "@google-pay/button-react";
-import Razorpay from 'razorpay';
-import Swal from 'sweetalert2'
+import Razorpay from "razorpay";
+import Swal from "sweetalert2";
 const useStyles = makeStyles((theme) => ({
 	notetitle: {
 		fontSize: "25px",
@@ -184,7 +184,7 @@ export default function NoteCard({ note }) {
 	let text2 = "registrations";
 	let text3 = users.concat(" ", text2);
 	let rupee = note.cost;
-	const linkk="https://event191407.herokuapp.com/"
+	const linkk = "https://events-galore-backend.onrender.com/";
 	const [open, setOpen] = useState(false);
 	const [opened, setOpened] = React.useState(false);
 	const theme = useTheme();
@@ -194,18 +194,24 @@ export default function NoteCard({ note }) {
 		console.log(confirmation);
 		if (confirmation == true) {
 			if (event_type == "paid") {
-				axios.put(`${linkk}update`, { register_count: register_count, _id: _id });
+				axios.put(`${linkk}update`, {
+					register_count: register_count,
+					_id: _id,
+				});
 				console.log(register_count);
 				setOpened(true);
 			} else {
 				register_count = register_count + 1;
-				axios.put(`${linkk}update`, { register_count: register_count, _id: _id });
+				axios.put(`${linkk}update`, {
+					register_count: register_count,
+					_id: _id,
+				});
 				console.log(register_count);
 				Swal.fire({
-					icon: 'success',
-					title: 'Success...',
-					text: 'Registered Successfully!',
-				  })
+					icon: "success",
+					title: "Success...",
+					text: "Registered Successfully!",
+				});
 			}
 		}
 	};
@@ -308,47 +314,39 @@ export default function NoteCard({ note }) {
 		.concat(sliceMonth)
 		.concat(" ")
 		.concat(sliceYear);
-		const initPayment = (data) =>
-		{
-			const options = {
-				key: "rzp_test_ozydJ2C7b7oxqD",
-				amount:data.amount,
-				currency:data.currency,
-				name:"Featured Event",
-				description: "BANNER EVENT PRICE",
-				image: "",
-				order_id: data.id,
-				handler: async(response)=>
-				{
-					try{
-						const {data} = await axios.post(`${linkk}verify`,response);
-						console.log(data);
-					}
-					catch(error)
-					{
-						console.log(error);
-					}
-				},
-				theme: {
-					color: "#3399cc",
+	const initPayment = (data) => {
+		const options = {
+			key: "rzp_test_ozydJ2C7b7oxqD",
+			amount: data.amount,
+			currency: data.currency,
+			name: "Featured Event",
+			description: "BANNER EVENT PRICE",
+			image: "",
+			order_id: data.id,
+			handler: async (response) => {
+				try {
+					const { data } = await axios.post(`${linkk}verify`, response);
+					console.log(data);
+				} catch (error) {
+					console.log(error);
 				}
-			}
-			const rzp1 = new window.Razorpay(options);
-			rzp1.open();
-		}
-		const handlePayment = async() =>
-		{
-			try
-			{
-				const { data } = await axios.post(`${linkk}payment`,{amount:rupee});
-				console.log(data);
-				initPayment(data.data);
-			}
-			catch(error)
-			{
-				console.log(error);
-			}
+			},
+			theme: {
+				color: "#3399cc",
+			},
 		};
+		const rzp1 = new window.Razorpay(options);
+		rzp1.open();
+	};
+	const handlePayment = async () => {
+		try {
+			const { data } = await axios.post(`${linkk}payment`, { amount: rupee });
+			console.log(data);
+			initPayment(data.data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 	return (
 		<Card>
 			<CardActionArea sx={{ backgroundColor: "white" }}>
@@ -494,9 +492,9 @@ export default function NoteCard({ note }) {
 											</DialogTitle>
 											<DialogContent>
 												<DialogContentText>
-												<Button variant="contained" onClick={handlePayment}>
-													BUY NOW
-												</Button>
+													<Button variant="contained" onClick={handlePayment}>
+														BUY NOW
+													</Button>
 												</DialogContentText>
 											</DialogContent>
 											<DialogActions>

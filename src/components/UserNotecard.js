@@ -30,7 +30,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import GooglePayButton from "@google-pay/button-react";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 const useStyles = makeStyles((theme) => ({
 	notetitle: {
 		fontSize: "25px",
@@ -179,7 +179,7 @@ export default function UserNotecard({ note }) {
 	let text2 = "registrations";
 	let text3 = users.concat(" ", text2);
 	let rupee = note.cost;
-	const linkk="https://event191407.herokuapp.com/"
+	const linkk = "https://events-galore-backend.onrender.com/";
 	const [open, setOpen] = useState(false);
 	const [opened, setOpened] = React.useState(false);
 	const theme = useTheme();
@@ -188,7 +188,7 @@ export default function UserNotecard({ note }) {
 		var confirmation = window.confirm("Are you sure");
 		console.log(confirmation);
 		if (confirmation == true) {
-				setOpened(true);
+			setOpened(true);
 		}
 	};
 
@@ -292,7 +292,7 @@ export default function UserNotecard({ note }) {
 		.concat(sliceYear);
 	return (
 		<Card>
-			<CardActionArea sx={{ backgroundColor: "white"}}>
+			<CardActionArea sx={{ backgroundColor: "white" }}>
 				<CardMedia
 					className={classes.media}
 					image={note.image}
@@ -434,7 +434,10 @@ export default function UserNotecard({ note }) {
 												{"PAID-EVENTS PORTAL"}
 											</DialogTitle>
 											<DialogContent>
-												<Typography>For cancelling event you need to pay Rs.100 as compensation</Typography>
+												<Typography>
+													For cancelling event you need to pay Rs.100 as
+													compensation
+												</Typography>
 												<DialogContentText>
 													<GooglePayButton
 														environment="TEST"

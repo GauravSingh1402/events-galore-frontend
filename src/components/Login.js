@@ -14,22 +14,22 @@ import { IconButton } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { userContext } from "../App";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 export default function Signup() {
 	const { state, dispatch } = useContext(userContext);
 	const history = useHistory();
 	const [showPassword, setShowPassword] = useState(false);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const linkk="https://event191407.herokuapp.com/"
+	const linkk = "https://events-galore-backend.onrender.com/";
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		if (!email || !password) {
 			Swal.fire({
-				icon: 'error',
-				title: 'Oops...',
-				text: 'Please enter all the fields!',
-			  })
+				icon: "error",
+				title: "Oops...",
+				text: "Please enter all the fields!",
+			});
 		} else {
 			const res = await fetch(`${linkk}login`, {
 				method: "POST",
@@ -45,17 +45,17 @@ export default function Signup() {
 			const data = await res.json();
 			if (res.status === 400 || !data) {
 				Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: 'Invalid Login!',
-				  })
+					icon: "error",
+					title: "Oops...",
+					text: "Invalid Login!",
+				});
 			} else {
 				dispatch({ type: "USER", payload: true });
 				Swal.fire({
-					icon: 'success',
-					title: 'Success...',
-					text: 'Login Successfull!',
-				  })
+					icon: "success",
+					title: "Success...",
+					text: "Login Successfull!",
+				});
 				setTimeout(() => {
 					history.push("/");
 				}, 3000);
