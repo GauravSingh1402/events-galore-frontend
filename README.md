@@ -9,6 +9,8 @@
 <p id="description">
 Events Galore is an event management platform built using the MERN stack with Material UI. It offers a convenient solution for event organizers and attendees to connect and manage various types of events. This project aims to provide a user-friendly experience for creating, discovering, and registering for events.</p>
 
+> The backend repository of the project is [here](https://github.com/GauravSingh1402/events-galore-backend)
+
 <h2>📃 Table of Contents</h2>
 
 * [Features](#features)
@@ -55,10 +57,7 @@ cd events-galore-frontend
 ```
 npm install
 ```
-5. Set up the database connection:
-
--   Update the MongoDB connection URL in the configuration file.
-6. Start the development server:
+4. Start the development server:
 ```
 npm start
 ```
