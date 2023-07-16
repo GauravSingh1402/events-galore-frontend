@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+<h1 align="center" id="title">Events Galore</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+    <a href="https://events-galore-frontend.vercel.app/">View Live Project</a>
+  </p>
 
-## Available Scripts
+<p align="center"><img src="https://socialify.git.ci/gauravsingh1402/events-galore-frontend/image?description=1&descriptionEditable=A%20feature-rich%20event%20management%20platform%20connecting%20organizers%20and%20attendees.&font=Inter&language=1&logo=https%3A%2F%2Fraw.githubusercontent.com%2FGauravSingh1402%2Fevents-galore-frontend%2Fmain%2Fsrc%2Flogo.png&name=1&owner=1&pattern=Charlie%20Brown&theme=Auto" width="640" height="320" alt="project-image"/></p>
 
-In the project directory, you can run:
+<p id="description">
+Events Galore is an event management platform built using the MERN stack with Material UI. It offers a convenient solution for event organizers and attendees to connect and manage various types of events. This project aims to provide a user-friendly experience for creating, discovering, and registering for events.</p>
 
-### `npm start`
+> The backend repository of the project is [here](https://github.com/GauravSingh1402/events-galore-backend)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<h2>📃 Table of Contents</h2>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* [Features](#features)
+* [Installation Steps](#installation-steps)
+* [Built With](#built-with)
+* [Usage](#usage)
+* [Authors Contribution](#authors)
+* [Ending-note](#ending-note)
 
-### `npm test`
+<h2 id="features">💡 Features</h2>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Here're some of the project's best features:
 
-### `npm run build`
+-   Event Organizers:
+    
+    -   Create an account and log in to the platform.
+    -   Create free or paid events with detailed descriptions.
+    -   Provide essential event information such as title, description, image, venue, and price.
+    -   Opt to feature events, which showcases them prominently in the hero section's carousel on the homepage, enhancing visibility and registration potential.
+-   Attendees:
+    
+    -   Explore the homepage with a carousel showcasing featured events.
+    -   Discover popular events based on registration count.
+    -   Find events happening during the current week.
+    -   Register and pay for events of interest.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<h2 id="installation-steps">⚙️ Installation</h2>
+Before getting started, ensure that you have the following:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-   Node.js installed on your machine.
+-   MongoDB database and connection details.
 
-### `npm run eject`
+1. Clone the repository
+```
+git clone https://github.com/GauravSingh1402/events-galore-frontend.git
+```
+2. For setting the backend of the project, follow the instructions in the [events-galore-backend](https://www.github.com/GauravSingh1402/events-galore-backend) repository
+3. Navigate to the project directory:
+```
+cd events-galore-frontend
+```
+4. Install the dependencies:
+```
+npm install
+```
+4. Start the development server:
+```
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<h2 id="built-with">💻 Built With</h2>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+-   MERN stack (MongoDB, Express.js, React.js, Node.js)
+-   Material UI
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<h2 id="usage">🖱️ Usage</h2>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1.  Create an account as an event organizer or log in if you already have one.
+3.  As an organizer, create an event by providing the necessary details.
+4.  Choose to feature the event to increase visibility.
+5.  As an attendee, explore the homepage to find featured, popular, and upcoming events.
+6.  Register for events that interest you and proceed with the payment, if applicable.
 
-## Learn More
+<h2 id="authors">🧑‍💻Authors</h2>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This project was developed by [Gaurav Singh](https://github.com/GauravSingh1402), [Advait Nurani](https://github.com/ADIVADER19) and [Hridayesh Padalkar](https://github.com/Hridayesh12). 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<h2 id="ending-note">🔚 Ending Note</h2>
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+While the platform offers essential event management capabilities, it may require further refinement and additional features for full production readiness.
