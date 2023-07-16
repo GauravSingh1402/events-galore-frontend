@@ -62,7 +62,7 @@ export default function Signup() {
 				Swal.fire({
 					icon: "success",
 					title: "Success...",
-					text: "Login Successfull!",
+					text: "Registered Successfully!",
 				});
 				setTimeout(() => {
 					history.push("/login");

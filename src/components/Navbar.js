@@ -40,7 +40,7 @@ function Navbar() {
 		if (JSON.parse(window.localStorage.getItem("state"))) {
 			return (
 				<>
-					<AppBar elevation={2}>
+					<AppBar elevation={5}>
 						<Toolbar className="bar">
 							<div>
 								<img

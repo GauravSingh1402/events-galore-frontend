@@ -8,7 +8,7 @@ import Login from "./components/Login";
 import Logout from "./components/Logout";
 import Profile from "./components/Profile";
 import UserEvent from "./components/UserEvent";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { initialState, reducer } from "./reducer/useReducer";
 
 export const userContext = createContext();

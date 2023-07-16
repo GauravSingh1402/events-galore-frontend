@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Tab, Tabs, AppBar, Grid, Paper, Container } from "@material-ui/core";
-import axios from "axios";
+import { Tab, Tabs, Grid, Container } from "@material-ui/core";
 import UserNotecard from "./UserNotecard";
 export default function UserEvent() {
 	const [event, setEvent] = useState([]);
@@ -15,7 +14,10 @@ export default function UserEvent() {
 	useEffect(() => {
 		fetch(`${linkk}eventweek`)
 			.then((res) => res.json())
-			.then((data) => setEventweek(data));
+			.then((data) => {
+				setEventweek(data);
+				console.log(data);
+			});
 	}, []);
 
 	const handleTabs = (e, val) => {

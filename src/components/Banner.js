@@ -356,17 +356,19 @@ export default function Banner() {
 						className={slideIndex === index + 1 ? "slide active-anim" : "slide"}
 					>
 						<div className="contest">
+							{/* <br />
 							<br />
-							<br />
-							<br />
-							<Typography
-								style={{ color: "white" }}
-								variant="h2"
-								align="center"
-							>
-								{obj.title}
-							</Typography>
-							<br />
+							<br /> */}
+							<div>
+								<Typography
+									style={{ color: "white" }}
+									variant="h2"
+									align="center"
+								>
+									{obj.title}
+								</Typography>
+							</div>
+							{/* <br /> */}
 							<div className="bannerdescription">
 								<Typography
 									style={{ color: "white" }}
@@ -378,11 +380,11 @@ export default function Banner() {
 							</div>
 							<div className="footercontent">
 								<div className="content2">
-									<div className="content">
+									<div className="content1">
 										<EventIcon fontSize="large" style={{ color: "white" }} />
 										<Typography
 											style={{ color: "white" }}
-											variant="h6"
+											variant="h5"
 											align="center"
 										>
 											{finalDate}
@@ -399,7 +401,7 @@ export default function Banner() {
 										</Typography>
 									</div>
 								</div>
-								<div className="content">
+								<div className="btncontent">
 									<Button
 										className={classing.bannerbtn}
 										variant="contained"
@@ -427,7 +429,8 @@ export default function Banner() {
 										</AppBar>
 										<div
 											style={{
-												backgroundImage: `url(${event[current_index].image})`,
+												// backgroundImage: `url(${event[current_index].image})`,
+												backgroundImage: `radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)`,
 												backgroundRepeat: "no-repeat",
 												backgroundSize: "100% 100%",
 												height: "30em",
@@ -620,7 +623,7 @@ export default function Banner() {
 													</div>
 												</Container>
 											</div>
-											<div className={classing.overlayed}></div>
+											{/* <div className={classing.overlayed}></div> */}
 										</div>
 									</Dialog>
 									&nbsp;&nbsp;

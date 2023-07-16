@@ -1,8 +1,7 @@
 import { createTheme } from "@material-ui/core/styles";
-import Poppins from "./Fonts/Poppins-Regular.ttf";
 
-const poppins = {
-	fontFamily: "Poppins",
+const jakarta = {
+	fontFamily: "Plus Jakarta Sans",
 };
 
 const theme = createTheme({
@@ -13,21 +12,21 @@ const theme = createTheme({
 		},
 	},
 	typography: {
-		fontFamily: ["Poppins", "'sans-serif'"].join(","),
+		fontFamily: ["Plus Jakarta Sans", "'sans-serif'"].join(","),
 		button: {
-			fontFamily: ["Poppins", "'sans-serif'"].join(","),
+			fontFamily: ["Plus Jakarta Sans", "'sans-serif'"].join(","),
 		},
 		h2: {
-			fontFamily: ["Poppins", "'sans-serif'"].join(","),
+			fontFamily: ["Plus Jakarta Sans", "'sans-serif'"].join(","),
 		},
 		h5: {
-			fontFamily: ["Poppins", "'sans-serif'"].join(","),
+			fontFamily: ["Plus Jakarta Sans", "'sans-serif'"].join(","),
 		},
 	},
 	overrides: {
 		MuiCssBaseline: {
 			"@global": {
-				"@font-face": [poppins],
+				"@font-face": [jakarta],
 			},
 		},
 	},

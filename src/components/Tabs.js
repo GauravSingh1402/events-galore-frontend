@@ -28,19 +28,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function SectionHeading() {
 	const classes = useStyles();
-	const [event, setEvent] = useState([]);
+	const [onlineEvents, setOnlineEvents] = useState([]);
+	const [offlineEvents, setOfflineEvents] = useState([]);
 	const linkk = "https://events-galore-backend.onrender.com/";
 	useEffect(() => {
 		fetch(`${linkk}oevent`)
 			.then((res) => res.json())
-			.then((data) => setEvent(data));
+			.then((data) => setOnlineEvents(data));
 	}, []);
 
-	const [eventweek, setEventweek] = useState([]);
 	useEffect(() => {
-		fetch(`${linkk}event`)
+		fetch(`${linkk}ofevent`)
 			.then((res) => res.json())
-			.then((data) => setEventweek(data));
+			.then((data) => setOfflineEvents(data));
 	}, []);
 
 	const handleTabs = (e, val) => {
@@ -61,12 +61,12 @@ export default function SectionHeading() {
 			>
 				<Tab
 					className={classes.boderpanel}
-					label="Popular Events"
+					label="Offline Events"
 					{...width(0)}
 				/>
 				<Tab
 					className={classes.boderpanel}
-					label="Events This Week"
+					label="Online Events"
 					{...width(1)}
 				/>
 			</Tabs>
@@ -79,7 +79,7 @@ export default function SectionHeading() {
 						rowspacing={1}
 						columnspacing={{ xs: 1, sm: 2, md: 3 }}
 					>
-						{event.map((events) => (
+						{offlineEvents.map((events) => (
 							<Grid item xs={12} sm={6} md={4} key={events._id}>
 								<NoteCard note={events} />
 							</Grid>
@@ -94,7 +94,7 @@ export default function SectionHeading() {
 						rowspacing={1}
 						columnspacing={{ xs: 1, sm: 2, md: 3 }}
 					>
-						{eventweek.map((eventw) => (
+						{onlineEvents.map((eventw) => (
 							<Grid item xs={12} sm={6} md={4} key={eventw._id}>
 								<NoteCard note={eventw} />
 							</Grid>

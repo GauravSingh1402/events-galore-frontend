@@ -36,6 +36,7 @@ export default function Profile() {
 			}
 		} catch (err) {
 			console.log(err);
+			console.log(data);
 			history.push("/login");
 		}
 	};

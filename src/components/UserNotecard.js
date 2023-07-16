@@ -5,14 +5,13 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActions } from "@material-ui/core";
-import { Button, Box, Container } from "@material-ui/core";
+import { Button, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PersonIcon from "@mui/icons-material/Person";
 import Chip from "@mui/material/Chip";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import RoomIcon from "@mui/icons-material/Room";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import Axios from "axios";
 import Dialog from "@mui/material/Dialog";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -30,7 +29,6 @@ import EmailIcon from "@mui/icons-material/Email";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import GooglePayButton from "@google-pay/button-react";
-import Swal from "sweetalert2";
 const useStyles = makeStyles((theme) => ({
 	notetitle: {
 		fontSize: "25px",
@@ -92,7 +90,6 @@ const useStyles = makeStyles((theme) => ({
 	eventdetail: {
 		height: "30em",
 		marginTop: "30em",
-		height: "50em",
 		backgroundColor: "#DDDDDD",
 		zIndex: 2,
 	},
@@ -172,14 +169,14 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 export default function UserNotecard({ note }) {
 	console.log(note);
-	let _id = note._id;
-	let event_type = note.ispaid;
+	// let _id = note._id;
+	// let event_type = note.ispaid;
 	let register_count = note.no_of_users;
 	let users = register_count.toString();
 	let text2 = "registrations";
 	let text3 = users.concat(" ", text2);
 	let rupee = note.cost;
-	const linkk = "https://events-galore-backend.onrender.com/";
+	// const linkk = "https://events-galore-backend.onrender.com/";
 	const [open, setOpen] = useState(false);
 	const [opened, setOpened] = React.useState(false);
 	const theme = useTheme();
@@ -187,7 +184,7 @@ export default function UserNotecard({ note }) {
 	const handleClickOpened = () => {
 		var confirmation = window.confirm("Are you sure");
 		console.log(confirmation);
-		if (confirmation == true) {
+		if (confirmation === true) {
 			setOpened(true);
 		}
 	};
@@ -211,40 +208,40 @@ export default function UserNotecard({ note }) {
 	let noTime = parseInt(sliceTime);
 	if (noTime >= 13) {
 		meridiem = "PM";
-		if (noTime == 13) {
+		if (noTime === 13) {
 			noTime = 1;
 		}
-		if (noTime == 14) {
+		if (noTime === 14) {
 			noTime = 2;
 		}
-		if (noTime == 15) {
+		if (noTime === 15) {
 			noTime = 3;
 		}
-		if (noTime == 16) {
+		if (noTime === 16) {
 			noTime = 4;
 		}
-		if (noTime == 17) {
+		if (noTime === 17) {
 			noTime = 5;
 		}
-		if (noTime == 18) {
+		if (noTime === 18) {
 			noTime = 6;
 		}
-		if (noTime == 19) {
+		if (noTime === 19) {
 			noTime = 7;
 		}
-		if (noTime == 20) {
+		if (noTime === 20) {
 			noTime = 8;
 		}
-		if (noTime == 21) {
+		if (noTime === 21) {
 			noTime = 9;
 		}
-		if (noTime == 22) {
+		if (noTime === 22) {
 			noTime = 10;
 		}
-		if (noTime == 23) {
+		if (noTime === 23) {
 			noTime = 11;
 		}
-		if (noTime == 24) {
+		if (noTime === 24) {
 			noTime = 12;
 		}
 	}
@@ -260,29 +257,29 @@ export default function UserNotecard({ note }) {
 	let sliceYear = dateString.slice(0, 4);
 	let sliceMonth = dateString.slice(5, 7);
 	let sliceDate = dateString.slice(8, 10);
-	if (sliceMonth == "01") {
+	if (sliceMonth === "01") {
 		sliceMonth = "January";
-	} else if (sliceMonth == "02") {
+	} else if (sliceMonth === "02") {
 		sliceMonth = "February";
-	} else if (sliceMonth == "03") {
+	} else if (sliceMonth === "03") {
 		sliceMonth = "March";
-	} else if (sliceMonth == "04") {
+	} else if (sliceMonth === "04") {
 		sliceMonth = "April";
-	} else if (sliceMonth == "05") {
+	} else if (sliceMonth === "05") {
 		sliceMonth = "May";
-	} else if (sliceMonth == "06") {
+	} else if (sliceMonth === "06") {
 		sliceMonth = "June";
-	} else if (sliceMonth == "07") {
+	} else if (sliceMonth === "07") {
 		sliceMonth = "July";
-	} else if (sliceMonth == "08") {
+	} else if (sliceMonth === "08") {
 		sliceMonth = "August";
-	} else if (sliceMonth == "09") {
+	} else if (sliceMonth === "09") {
 		sliceMonth = "September";
-	} else if (sliceMonth == "10") {
+	} else if (sliceMonth === "10") {
 		sliceMonth = "October";
-	} else if (sliceMonth == "11") {
+	} else if (sliceMonth === "11") {
 		sliceMonth = "November";
-	} else if (sliceMonth == "12") {
+	} else if (sliceMonth === "12") {
 		sliceMonth = "December";
 	}
 	let finalDate = sliceDate
@@ -353,7 +350,11 @@ export default function UserNotecard({ note }) {
 						<div className={classes.eventdetail}>
 							<Container className={classes.eventalign}>
 								<div className={classes.eventimage}>
-									<img className={classes.eventbanner} src={note.image} />
+									<img
+										className={classes.eventbanner}
+										src={note.image}
+										alt="Event"
+									/>
 									<Container>
 										<Typography
 											className={classes.eventdetailinfo}
